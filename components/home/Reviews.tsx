@@ -31,7 +31,7 @@ const REVIEWS_DATA = [
 
 function Reviews() {
     return (
-        <section>
+        <section className='py-32'>
             <div className="container">
                 <div className='flex justify-between items-center mb-12'>
                     <h2>Reviews</h2>

@@ -1,15 +1,17 @@
 import type { Metadata } from "next";
-import { Rubik , Open_Sans } from "next/font/google";
+import { Rubik, Open_Sans } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 
 const rubik = Rubik({
+    display: 'swap',
     variable: "--font-rubik",
     subsets: ["latin"],
 });
 
 const openSans = Open_Sans({
+    display: 'swap',
     variable: "--font-open-sans",
     subsets: ["latin"],
 });

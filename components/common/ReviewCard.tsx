@@ -15,8 +15,8 @@ function ReviewCard({title, content, rating, clientImg, reviewImg} : ReviewCardP
         <div>
             <div className='bg-[#FAFAFA] rounded-t-4xl p-8'>
                 <div className='flex justify-between items-center gap-2'>
-                    <div className='space-y-1'>
-                        <h5 className='text-2xl/[1] font-semibold font-rubik'>{title}</h5>
+                    <div className='space-y-2'>
+                        <h5>{title}</h5>
                         <p className='max-w-73.25 text-gray-800'>{content}</p>
                     </div>
                     <Image src={clientImg} alt='client1' width={64} height={64}/>
@@ -27,7 +27,7 @@ function ReviewCard({title, content, rating, clientImg, reviewImg} : ReviewCardP
                             <StarIcon key={indx} className={`${indx < rating ? 'text-amber-500' : 'text-gray-300' } align-text-top`}/>
                         ))
                     }
-                    <span className='font-semibold ml-1'>5.0</span>
+                    <span className='font-semibold leading-none ml-1'>5.0</span>
                 </div>
             </div>
             <figure className='rounded-b-4xl overflow-hidden'>
