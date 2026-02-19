@@ -8,7 +8,7 @@ function NewsLetter() {
     return (
         <section>
             <div className="container">
-                <div className='relative -bottom-50 flex justify-between items-center bg-primary rounded-[48px] px-18 pt-16 pb-60 z-10'>
+                <div className='flex justify-between items-center bg-primary rounded-[48px] px-18 pt-16 pb-60'>
                     <div>
                         <h3 className='max-w-127.5 text-white mb-6'>Join our KicksPlus Club & get 15% off</h3>
                         <p className='text-gray'>Sign up for free! Join the community.</p>

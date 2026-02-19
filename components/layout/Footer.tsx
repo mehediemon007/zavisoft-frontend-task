@@ -9,9 +9,9 @@ type Props = {
 
 function Footer({}: Props) {
     return (
-        <footer>
+        <footer className='relative -mt-50 z-20'>
             <div className="container">
-                <div className='relative bg-foreground rounded-[48px] z-20'>
+                <div className='bg-foreground rounded-[48px]'>
                     <div className='flex justify-between gap-30 p-10 pb-24'>
                         <div className='footer-widget'>
                             <h4 className='text-4xl/[1] font-semibold font-rubik text-amber-500 mb-1.5'>About us</h4>
