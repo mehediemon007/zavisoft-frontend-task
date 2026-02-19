@@ -27,19 +27,31 @@
     @apply text-[74px]/[95%] font-semibold font-rubik uppercase
   }
 
+  h3 {
+    @apply text-5xl/[1] font-semibold font-rubik uppercase
+  }
+
   h5{
     @apply text-2xl/[1] font-semibold font-rubik
+  }
+
+  input {
+    @apply outline-none
   }
 }
 
 @layer components {
 
   .btn {
-    @apply inline-flex justify-center items-center w-max h-12 text-sm/[1] font-medium font-rubik tracking-[0.25px] uppercase px-8 rounded-lg
+    @apply inline-flex justify-center items-center w-max h-12 text-sm/[1] font-medium font-rubik text-white tracking-[0.25px] uppercase px-8 rounded-lg
   }
 
   .btn-primary {
-    @apply text-white bg-primary
+    @apply bg-primary
+  }
+
+  .btn-secondary {
+    @apply bg-foreground
   }
 
   .footer-widget li a{
