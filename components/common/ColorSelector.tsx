@@ -1,27 +1,62 @@
 'use client';
-import { cn } from "@/lib/uitls";
 
-export default function ColorSelector() {
+import { useState } from "react";
+
+import { cn } from "@/lib/utils";
+
+const PRODUCT_COLORS = [
+    { name: 'Blue', hex: '#253043' },
+    { name: 'Olive', hex: '#707E6E' },
+];
+
+interface ColorSelectorProps {
+    selectedColor?: string;
+    onColorSelect?: (hex: string) => void;
+}
+
+export default function ColorSelector({ selectedColor, onColorSelect }: ColorSelectorProps) {
+
+    const [localColor, setLocalColor] = useState<string | null>(PRODUCT_COLORS[0].hex);
+
+    const currentColor = selectedColor || localColor;
+
+    const handleSelect = (hex: string) => {
+        setLocalColor(hex);
+        if (onColorSelect) onColorSelect(hex);
+    };
 
     return (
-        <div className={cn("flex justify-start items-center flex-wrap gap-4")}>
-            <label key={1} className="relative">
+        
+        <div className="flex justify-start items-center flex-wrap gap-4 pl-2">
+            {PRODUCT_COLORS.map((color) => (
+
+                <label key={color.hex} className="relative">
+
                     <input
                         type="radio"
-                        name="color"
-                        className="hidden peer"
+                            name="color"
+                            value={color.hex}
+                            checked={currentColor === color.hex}
+                            onChange={() => handleSelect(color.hex)}
+                            className="hidden peer"
                     />
+
                     <span
                         className={cn(
-                            "block w-8 h-8 rounded-full border border-[#dee2e6] cursor-pointer peer-checked:ring-2 peer-checked:ring-offset-2",
+                            "block w-8 h-8 rounded-full cursor-pointer peer-checked:ring-3 peer-checked:ring-offset-4 peer-checked:ring-offset-background",
                         )}
+
                         style={{
-                            backgroundColor: '#232321',
-                            boxShadow: `0 0 0 2px #232321`,
-                        }}
-                        aria-label={'#232321'}
+                            backgroundColor: color.hex,
+                        } as React.CSSProperties}
+
+                        aria-label={color.name}
+
                     ></span>
+
                 </label>
+            ))}
+
         </div>
     );
 }

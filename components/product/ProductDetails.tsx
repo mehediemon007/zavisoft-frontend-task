@@ -1,70 +1,114 @@
-import React from 'react'
+'use client';
+
+import React, { useState } from 'react';
+import { useQuery } from '@tanstack/react-query';
+import { fetchProductBySlug } from '@/services/product-service';
 import Image from 'next/image';
 import ColorSelector from '../common/ColorSelector';
+import SizeSelector from '../common/SizeSelector';
+
+import { cn } from '@/lib/utils';
 
 // *** Import Icons
 import { HeartIcon } from '../common/Icons';
-import SizeSelector from '../common/SizeSelector';
 
-function ProductDetails() {
+function ProductDetails({ slug} : { slug: string}) {
+
+    const { data: product, isError } = useQuery({
+        queryKey: ['product', slug],
+        queryFn: () => fetchProductBySlug(slug),
+    });
+    
+    const [selectedSize, setSelectedSize] = useState<number>(38);
+    const [selectedColor, setSelectedColor] = useState<string>('#253043');
+
+    if (isError || !product) return <div className="p-20 text-center">Product not found.</div>;
+
     return (
         <section className='mt-16'>
             <div className="container">
-                <div className='grid grid-cols-3 gap-4'>
-                    <div className="col-span-2">
-                        <div className="grid grid-cols-2 gap-4">
-                            <div className="col-span-1">
-                                <Image src={'/assets/product1.png'} alt='Product1' width={429} height={510}/>
-                            </div>
-                            <div className="col-span-1">
-                                <Image src={'/assets/product2.png'} alt='Product1' width={429} height={510}/>
-                            </div>
-                            <div className="col-span-1">
-                                <Image src={'/assets/product3.png'} alt='Product1' width={429} height={510}/>
-                            </div>
-                            <div className="col-span-1">
-                                <Image src={'/assets/product4.png'} alt='Product1' width={429} height={510}/>
-                            </div>
-                        </div>
+                <div className='grid grid-cols-3 gap-3.75'>
+                    <div className="col-span-2 grid grid-cols-2 gap-4">
+                        {product.images.map((image, indx) => {
+                                
+                                const len = product.images.length;
+                                const isSingle = len === 1;
+                                const isDouble = len === 2;
+
+                                const isEven = len % 2 === 0;
+                                const isLast = indx === len - 1;
+                                const isSecondLast = indx === len - 2;
+
+                                return (
+                                    <div 
+                                        key={indx} 
+                                        className={cn(
+                                            isSingle ? "col-span-2" : "col-span-1"
+                                        )}
+                                    >
+                                        <Image 
+                                            src={image} 
+                                            alt={`${product.title} - Image ${indx + 1}`}
+                                            width={isSingle ? 860 : 429}
+                                            height={510}
+                                            priority={indx < 2}
+                                            sizes={
+                                                isSingle 
+                                                ? "(max-width: 768px) 100vw, 860px"
+                                                : "(max-width: 768px) 100vw, 429px"
+                                            }
+                                            className={cn(
+                                                "object-cover w-full h-full",
+                                                isSingle && "rounded-[48px]",
+                                                isDouble && [
+                                                    indx === 0 && "rounded-l-[48px]",
+                                                    indx === 1 && "rounded-r-[48px]"
+                                                ],
+                                                (!isSingle && !isDouble) && [
+                                                    indx === 0 && "rounded-tl-[48px]",
+                                                    indx === 1 && "rounded-tr-[48px]",
+                                                    (!isEven && isLast) || (isEven && isSecondLast) ? "rounded-bl-[48px]" : null,
+                                                    isEven && isLast && "rounded-br-[48px]",
+                                                ]
+                                            )}
+                                        />
+                                    </div>
+                                );
+                            })}
                     </div>
                     <div className="col-span-1">
-                        <span className='btn btn-primary'>New Release</span>
-                        <h3 className='text-[32px]'>ADIDAS 4DFWD X PARLEY RUNNING SHOES</h3>
-                        <p>$125.00</p>
+                        <span className='btn btn-primary h-9.5 text-xs capitalize rounded-xl px-4 py-3'>New Release</span>
+                        <h3 className='text-[32px] my-4'>{product.title}</h3>
+                        <h5 className='text-primary'>${product.price}</h5>
 
-                        <div>
-                            <p className='2xl:text-xl font-medium text-[#212B36EE] mb-4'>Color</p>
-                            <ColorSelector/>
+                        <div className='my-8'>
+                            <p className='font-semibold font-rubik uppercase mb-2'>Color</p>
+                            <ColorSelector selectedColor={selectedColor} onColorSelect={setSelectedColor}/>
                         </div>
 
                         <div>
-                            <div>
-                                <p className='2xl:text-xl font-medium text-[#212B36EE] mb-4'>Size</p>
-                                <span>Size chart</span>
+                            <div className='flex justify-between items-start mb-1'>
+                                <p className='font-semibold font-rubik'>Size</p>
+                                <span className='text-sm font-medium font-rubik tracking-[0.25px] uppercase underline'>Size chart</span>
                             </div>
-                            <SizeSelector/>
+                            <SizeSelector selectedSize={selectedSize} onSizeSelect={setSelectedSize}/>
+                        </div>
+
+                        <div className='flex flex-wrap justify-between items-center gap-2 my-8'>
+                            <button className='btn btn-secondary flex-1'>Add to cart</button>
+                            <button className='btn btn-secondary px-4 py-2'><HeartIcon/></button>
+                            <button className='btn btn-primary w-full'>Buy it now</button>
                         </div>
 
                         <div>
-                            <button className='btn btn-secondary'>Add to cart</button>
-                            <button className='btn btn-secondary'><HeartIcon/></button>
-                        </div>
-                        <button className='btn btn-primary w-full'>Buy it now</button>
-                        <div>
-                            <h6>About the product</h6>
-                            <p>
-                                Shadow Navy / Army Green
-
-                                This product is excluded from all promotional discounts and offers.
-
-                                Pay over time in interest-free installments with Affirm, Klarna or Afterpay.
-                                Join adiClub to get unlimited free standard shipping, returns, & exchanges.
-                            </p>
+                            <h6 className='mb-2'>About the product</h6>
+                            <p className='text-gray-800'>{product.description}</p>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
+
     )
 }
 

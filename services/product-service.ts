@@ -12,7 +12,7 @@ export const fetchCategories = async (): Promise<Category[]> => {
 };
 
 export const fetchProductBySlug = async (slug: string): Promise<Product> => {
-    const { data } = await axios.get(`https://api.escuelajs.co/api/v1/products/slug/${slug}`);
+    const { data } = await axios.get(`${process.env.NEXT_PUBLIC_API_BASE_URL}/products/slug/${slug}`);
     return data;
 };
 

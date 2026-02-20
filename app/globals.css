@@ -5,6 +5,9 @@
   --foreground: #232321;
   --primary: #4A69E2;
   --gray: #E7E7E3;
+}
+
+@theme {
   --color-amber-500: #ffa52f;
   --color-gray-800: #232321cc;
 }

@@ -1,27 +1,53 @@
 'use client';
 
-import { useEffect, useState, useMemo } from "react";
+import { useState } from "react";
 
-import { cn } from "@/lib/uitls";
+import { cn } from "@/lib/utils";
 
-// const sizes = ["XS", "S", "M", "L", "XL"];
+const SHOE_SIZES = [38, 39, 40, 41, 42, 43, 44, 45, 46, 47];
 
-export default function SizeSelector() {
+interface SizeSelectorProps {
+    selectedSize?: number;
+    onSizeSelect?: (size: number) => void;
+}
+
+export default function SizeSelector({ selectedSize, onSizeSelect } : SizeSelectorProps) {
+
+    const [localSize, setLocalSize] = useState<number | null >(null);
+
+    const currentSize = selectedSize || localSize;
+
+    const handleSelect = (size : number) => {
+        setLocalSize(size);
+        if (onSizeSelect) onSizeSelect(size);
+    }
 
     return (
         <>
-            <div>
-                <label className="relative">
-                    <input
-                        type="radio"
-                        className="hidden peer"
-                    />
-                    <span
-                        className={cn('flex items-center justify-center min-w-10 lg:min-w-20 lg:h-10 border border-[#D3D3D7] lg:text-xl font-medium text-[#212B36EE] uppercase cursor-pointer px-2 transition-all duration-100 ease-linear peer-checked:ring-1 peer-checked:ring-[#212B36EE] peer-checked:border-transparent')}
-                    >
-                        XL
-                    </span>
-                </label>
+            <div className="flex flex-wrap gap-1">
+                {
+                    SHOE_SIZES.map((size) => (
+                        <label key={size} className="relative group">
+                            <input
+                                type="radio"
+                                name="shoe-size"
+                                value={size}
+                                checked={currentSize === size}
+                                onChange={() => handleSelect(size)}
+                                className="hidden peer"
+                            />
+                            <span
+                                className={cn(
+                                    'inline-flex justify-center items-center w-[50.25px] h-12 text-sm font-medium font-rubik tracking-[0.25px] uppercase bg-white rounded-lg px-4 py-2 cursor-pointer transition-all duration-200 ease-in-out',
+                                    'hover:bg-[#232321] hover:text-white',
+                                    'peer-checked:bg-[#232321] peer-checked:text-white peer-checked:border-transparent'
+                                )}
+                            >
+                                {size}
+                            </span>
+                        </label>
+                    ))
+                }
             </div>
         </>
     );

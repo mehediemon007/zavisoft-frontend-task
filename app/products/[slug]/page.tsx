@@ -25,7 +25,7 @@ export default async function Page({ params }: { params: { slug: string } }) {
     return (
         <>
             <HydrationBoundary state={dehydrate(queryClient)}>
-                <ProductDetails/>
+                <ProductDetails slug={slug}/>
                 <RelatedProducts slug={slug}/>
             </HydrationBoundary>
         </>
