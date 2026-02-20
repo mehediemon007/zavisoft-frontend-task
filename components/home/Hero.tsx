@@ -3,9 +3,9 @@ import { HeroSlider } from "../common/HeroSlider";
 function Hero() {
 
     return (
-        <section className='mt-6'>
+        <section className='pb-22.5'>
             <div className="container">
-                <h1>Do it <span className="text-primary">right</span></h1>
+                <h1 className="my-6">Do it <span className="text-primary">right</span></h1>
                 <HeroSlider/>
             </div>
         </section>

@@ -20,9 +20,9 @@ interface ImageItem {
 }
 
 const images: ImageItem[] = [
-    { id: 1, url: "/assets/hero1.jpg", alt: "Nike Shoe" },
-    { id: 2, url: "/assets/hero2.jpg", alt: "Nike Shoe Pair" },
-    { id: 3, url: "/assets/hero3.jpg", alt: "Nike Shoe Backview" },
+    { id: 1, url: "/assets/hero1.webp", alt: "Nike Shoe" },
+    { id: 2, url: "/assets/hero2.webp", alt: "Nike Shoe Pair" },
+    { id: 3, url: "/assets/hero3.webp", alt: "Nike Shoe Backview" },
 ];
 
 export const HeroSlider: React.FC = () => {
@@ -42,56 +42,55 @@ export const HeroSlider: React.FC = () => {
     };
 
     return (
-        <div className="relative w-full px-4">
-            <div className="relative overflow-hidden rounded-[64px] h-187.5 bg-gray-100">
+        <div className="relative overflow-hidden rounded-[64px]">
                 
-                {/* Main Slider */}
-                <Swiper
-                    loop={true}
-                    effect={'fade'}
-                    navigation={false}
-                    autoplay={{ delay: 5000 }}
-                    onSwiper={(swiper) => (mainSwiperRef.current = swiper)}
-                    onSlideChange={(swiper) => setActiveIdx(swiper.realIndex)}
-                    modules={[Navigation, Autoplay, EffectFade]}
-                    className="h-full w-full"
-                >
-                    {images.map((img) => (
-                        <SwiperSlide key={img.id} className="relative h-full w-full">
-                            <Image 
-                                src={img.url} 
-                                alt={img.alt} 
-                                fill 
-                                priority 
-                                className="object-cover"
-                            />
-                            <div className="absolute inset-0 flex flex-col justify-end p-16 bg-linear-to-r from-black/50 to-transparent text-white">
-                                <h2 className="leading-none">NIKE AIR MAX</h2>
-                                <p className='max-w-122.5 text-2xl/[1] font-semibold'>Nike introducing the new air max for everyone&apos;s comfort</p>
-                                <Link href={'#'} className="btn btn-primary mt-6">
-                                    Shop now
-                                </Link>
-                            </div>
-                        </SwiperSlide>
-                    ))}
-                </Swiper>
+            {/* Main Slider */}
+            <Swiper
+                loop={true}
+                effect={'fade'}
+                navigation={false}
+                autoplay={{ delay: 5000 }}
+                onSwiper={(swiper) => (mainSwiperRef.current = swiper)}
+                onSlideChange={(swiper) => setActiveIdx(swiper.realIndex)}
+                modules={[Navigation, Autoplay, EffectFade]}
+                className='w-full h-187.5'
+            >
+                {images.map((img) => (
+                    <SwiperSlide key={img.id} className="overlay before:bg-[linear-gradient(180deg,rgba(0,0,0,0)_31.12%,rgba(0,0,0,0.5)_66.06%)]">
+                        <Image 
+                            src={img.url} 
+                            alt={img.alt}
+                            fill
+                            priority
+                            fetchPriority='high' 
+                            className="object-cover"
+                        />
+                        <div className="absolute inset-0 flex flex-col justify-end p-12 text-white z-10">
+                            <h2 className="leading-none">NIKE AIR MAX</h2>
+                            <p className='max-w-122.5 text-2xl/[1] font-semibold'>Nike introducing the new air max for everyone&apos;s comfort</p>
+                            <Link href={'#'} className="btn btn-primary mt-6">
+                                Shop now
+                            </Link>
+                        </div>
+                    </SwiperSlide>
+                ))}
+            </Swiper>
 
-                <div className="absolute bottom-10 right-10 z-20 flex flex-col gap-4">
-                    {inactiveImages.map((img) => (
-                        <button
-                            key={img.id}
-                            onClick={() => handleThumbClick(img.id)}
-                            className="relative h-24 w-24 overflow-hidden rounded-2xl border-2 border-white/20 hover:border-white transition-all duration-300 hover:scale-105 active:scale-95"
-                        >
-                            <Image 
-                                src={img.url} 
-                                alt={`Thumb ${img.id}`} 
-                                fill 
-                                className="object-cover"
-                            />
-                        </button>
-                    ))}
-                </div>
+            <div className="absolute bottom-10 right-10 z-20 flex flex-col gap-4">
+                {inactiveImages.map((img) => (
+                    <button
+                        key={img.id}
+                        onClick={() => handleThumbClick(img.id)}
+                        className="relative w-40 h-40 border-3 border-gray rounded-4xl overflow-hidden"
+                    >
+                        <Image 
+                            src={img.url} 
+                            alt={`Thumb ${img.id}`} 
+                            fill 
+                            className="object-cover"
+                        />
+                    </button>
+                ))}
             </div>
         </div>
     );

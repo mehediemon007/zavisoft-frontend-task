@@ -72,3 +72,14 @@
   max-width: 1320px;
   margin-inline: auto
 }
+
+@layer utilities {
+
+  .overlay {
+    @apply relative
+  }
+
+  .overlay::before{
+    @apply inset-0 absolute top-0 left-0 content-[''] w-full h-full
+  }
+}
