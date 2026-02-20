@@ -1,8 +1,11 @@
 import type { Metadata } from "next";
 import { Rubik, Open_Sans } from "next/font/google";
 import "./globals.css";
+
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
+
+import QueryProvider from "@/providers/QueryProvider";
 
 const rubik = Rubik({
     display: 'swap',
@@ -27,11 +30,13 @@ export default function RootLayout({children,}: Readonly<{children: React.ReactN
             <body
                 className={`${rubik.variable} ${openSans.variable} antialiased`}
             >
-                <Header/>
-                <main>
-                    {children}
-                </main>
-                <Footer/>
+                <QueryProvider>
+                    <Header/>
+                        <main>
+                            {children}
+                        </main>
+                        <Footer/>
+                </QueryProvider>
             </body>
         </html>
     );
