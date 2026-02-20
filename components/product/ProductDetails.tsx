@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { fetchProductBySlug } from '@/services/product-service';
-import Image from 'next/image';
+
 import ColorSelector from '../common/ColorSelector';
 import SizeSelector from '../common/SizeSelector';
 
@@ -11,6 +11,7 @@ import { cn } from '@/lib/utils';
 
 // *** Import Icons
 import { HeartIcon } from '../common/Icons';
+import { ZoomableImage } from '@/app/products/[slug]/_components/ZoomableImage';
 
 function ProductDetails({ slug} : { slug: string}) {
 
@@ -41,12 +42,13 @@ function ProductDetails({ slug} : { slug: string}) {
 
                                 return (
                                     <div 
-                                        key={indx} 
+                                        key={image}
                                         className={cn(
-                                            isSingle ? "col-span-2" : "col-span-1"
+                                            "overflow-hidden cursor-zoom-in",
+                                            isSingle ? "col-span-2" : "col-span-1",
                                         )}
                                     >
-                                        <Image 
+                                        <ZoomableImage
                                             src={image} 
                                             alt={`${product.title} - Image ${indx + 1}`}
                                             width={isSingle ? 860 : 429}
@@ -71,6 +73,7 @@ function ProductDetails({ slug} : { slug: string}) {
                                                     isEven && isLast && "rounded-br-[48px]",
                                                 ]
                                             )}
+                                        
                                         />
                                     </div>
                                 );
