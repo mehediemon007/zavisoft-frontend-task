@@ -15,8 +15,13 @@ export default function RelatedProducts({ slug }: { slug: string }) {
     if (!relatedProducts || relatedProducts.length === 0) return null;
 
     return (
-        <div className="related-slider">
-            <ProductSlider products={relatedProducts} />
-        </div>
+        <section className='py-32'>
+            <div className="container">
+                <h3 className='mb-8'>You may also like</h3>
+                <div className="related-slider">
+                    <ProductSlider products={relatedProducts} />
+                </div>
+            </div>
+        </section>
     );
 }

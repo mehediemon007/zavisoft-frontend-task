@@ -1,4 +1,3 @@
-import NewsLetter from "@/components/common/NewsLetter";
 import Hero from "@/components/home/Hero";
 import NewDrops from "@/components/home/NewDrops";
 import Categories from "@/components/home/Categories";
@@ -30,7 +29,6 @@ export default async function Home() {
                 <Categories/>
             </HydrationBoundary>
             <Reviews/>
-            <NewsLetter/>
         </>
     );
 }

@@ -43,6 +43,10 @@
     @apply text-2xl/[1] font-semibold font-rubik
   }
 
+  h6 {
+    @apply text-base/[1] font-semibold font-rubik uppercase
+  }
+
   input {
     @apply outline-none
   }

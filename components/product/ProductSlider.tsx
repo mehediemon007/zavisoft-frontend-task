@@ -21,7 +21,7 @@ function ProductSlider({ products } : ProductSliderProps) {
                 <Swiper
                     modules={[Navigation, Pagination, Autoplay, A11y]}
                     spaceBetween={16}
-                    slidesPerView={9}
+                    slidesPerView={4}
                     slidesPerGroup={2}
                     navigation={{
                         nextEl: ".swiper-button-next",
@@ -34,20 +34,7 @@ function ProductSlider({ products } : ProductSliderProps) {
                         bulletClass: "custom-pagination-bullet",
                         bulletActiveClass: "custom-pagination-bullet-active",
                     }}
-                    loop={true}
-                    autoplay={{
-                        delay: 1000,
-                        disableOnInteraction: false,
-                        pauseOnMouseEnter: true,
-                    }}
                     speed={500}
-                    breakpoints={{
-                        320: { slidesPerView: 4, spaceBetween: 8 },
-                        640: { slidesPerView: 4, spaceBetween: 16 },
-                        768: { slidesPerView: 5, spaceBetween: 16 },
-                        1024: { slidesPerView: 7, spaceBetween: 18 },
-                        1280: { slidesPerView: 13, spaceBetween: 20 },
-                    }}
                 >
                     {
                         products.map((product) => (

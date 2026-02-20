@@ -7,7 +7,7 @@ import RelatedProducts from './_components/RelatedProducts';
 
 export default async function Page({ params }: { params: { slug: string } }) {
 
-    const { slug } = params;
+    const { slug } = await params;
 
     const queryClient = new QueryClient();
 
@@ -26,12 +26,8 @@ export default async function Page({ params }: { params: { slug: string } }) {
         <>
             <HydrationBoundary state={dehydrate(queryClient)}>
                 <ProductDetails/>
-                <div>
-                    <h3>You may also like</h3>
-                    <RelatedProducts slug={slug}/>
-                </div>
+                <RelatedProducts slug={slug}/>
             </HydrationBoundary>
-
         </>
     )
 }
