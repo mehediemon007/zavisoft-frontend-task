@@ -2,7 +2,7 @@
 
 import React from 'react'
 import Link from 'next/link';
-import ProductCard from '../common/ProductCard';
+import ProductCard from '../product/ProductCard';
 
 import { useQuery } from '@tanstack/react-query';
 import { fetchProducts } from '@/services/product-service';
