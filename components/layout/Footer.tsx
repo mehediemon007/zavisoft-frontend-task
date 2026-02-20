@@ -75,7 +75,7 @@ function Footer({}: Props) {
                         </div>
                     </div>
                     <div className='px-7 rounded-b-[48px] overflow-hidden'>
-                        <Image src={'assets/logo-lg.svg'} alt='Kicks' width={1262} height={313} priority={true} fetchPriority='high' className='objcet-cover'/>
+                        <Image src={'/assets/logo-lg.svg'} alt='Kicks' width={1262} height={313} priority={true} fetchPriority='high' className='objcet-cover'/>
                     </div>
                 </div>
                 <div className='text-center pt-7 pb-4.5'>
