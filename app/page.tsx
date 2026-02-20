@@ -26,7 +26,6 @@ export default async function Home() {
         <>
             <Hero/>
             <HydrationBoundary state={dehydrate(queryClient)}>
-                <NewDrops/>
                 <Categories/>
             </HydrationBoundary>
             <Reviews/>

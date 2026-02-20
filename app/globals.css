@@ -23,8 +23,12 @@
     @apply text-foreground font-sans bg-background
   }
 
+  h1 {
+    @apply text-[13.969rem]/[1] font-bold font-rubik uppercase
+  }
+
   h2 {
-    @apply text-[74px]/[95%] font-semibold font-rubik uppercase
+    @apply text-[4.625rem]/[.95] font-semibold font-rubik uppercase
   }
 
   h3 {

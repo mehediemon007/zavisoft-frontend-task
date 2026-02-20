@@ -1,13 +1,15 @@
-import React from 'react'
+import { HeroSlider } from "../common/HeroSlider";
 
-type Props = {
-    className?: string
-}
+function Hero() {
 
-function HeroSlider({}: Props) {
     return (
-        <div className='font-rubik'>HeroSlider</div>
+        <section className='mt-6'>
+            <div className="container">
+                <h1>Do it <span className="text-primary">right</span></h1>
+                <HeroSlider/>
+            </div>
+        </section>
     )
 }
 
-export default HeroSlider;
+export default Hero;

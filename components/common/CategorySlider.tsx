@@ -4,9 +4,6 @@ import Slider from "react-slick";
 import CategoryCard from "./CategoryCard";
 import { Category } from "@/types/product";
 
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
-
 interface CategorySliderProps {
   categories: Category[];
 }
