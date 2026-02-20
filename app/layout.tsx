@@ -32,10 +32,10 @@ export default function RootLayout({children,}: Readonly<{children: React.ReactN
             >
                 <QueryProvider>
                     <Header/>
-                        <main>
-                            {children}
-                        </main>
-                        <Footer/>
+                    <main>
+                        {children}
+                    </main>
+                    <Footer/>
                 </QueryProvider>
             </body>
         </html>

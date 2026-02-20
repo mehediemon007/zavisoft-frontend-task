@@ -31,6 +31,10 @@
     @apply text-5xl/[1] font-semibold font-rubik uppercase
   }
 
+  h4 {
+    @apply text-4xl/[1] font-semibold font-rubik
+  }
+
   h5{
     @apply text-2xl/[1] font-semibold font-rubik
   }

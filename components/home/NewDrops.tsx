@@ -4,14 +4,16 @@ import React from 'react'
 import Link from 'next/link';
 import ProductCard from '../common/ProductCard';
 
-import { useProducts } from '@/features/products/useProducts';
+import { useQuery } from '@tanstack/react-query';
+import { fetchProducts } from '@/services/product-service';
 
 
 function NewDrops() {
 
-    const { data: products, isLoading, isError, error } = useProducts(4);
-
-    console.log(products)
+    const { data: products, isLoading, isError } = useQuery({
+        queryKey: ['products', 4],
+        queryFn: () => fetchProducts(4)
+    });
 
     if (isLoading) {
         return (
