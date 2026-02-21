@@ -11,13 +11,13 @@ function Footer({}: Props) {
     return (
         <footer className='relative -mt-50 z-20'>
             <div className="container">
-                <div className='bg-foreground rounded-[48px]'>
-                    <div className='flex justify-between gap-30 p-10 pb-24'>
+                <div className='bg-foreground rounded-3xl sm:rounded-[48px]'>
+                    <div className='flex flex-col sm:flex-row justify-between gap-10 sm:gap-30 p-4 sm:p-10 pb-11.25 sm:pb-24'>
                         <div className='footer-widget'>
-                            <h4 className='text-4xl/[1] font-semibold font-rubik text-amber-500 mb-1.5'>About us</h4>
-                            <p className='max-w-111.5 text-xl font-semibold font-sans text-gray'>We are the biggest hyperstore in the universe. We got you all cover with our exclusive collections and latest drops.</p>
+                            <h4 className='text-2xl/[1.167] sm:text-4xl/[1.1945] font-semibold font-rubik text-amber-500 mb-1'>About us</h4>
+                            <p className='max-w-111.5 text-base/snug sm:text-xl/[1.35] font-semibold font-sans text-gray'>We are the biggest hyperstore in the universe. We got you all cover with our exclusive collections and latest drops.</p>
                         </div>
-                        <div className='flex-1 flex justify-between'>
+                        <div className='flex-1 flex flex-col sm:flex-row justify-between gap-6'>
                             <div className='footer-widget'>
                                 <h5 className='text-amber-500 mb-4'>Categories</h5>
                                 <ul className='space-y-2'>
@@ -57,7 +57,7 @@ function Footer({}: Props) {
                             </div>
                             <div className='footer-widget'>
                                 <h5 className='text-amber-500 mb-4'>Follow us</h5>
-                                <ul className='flex justify-between items-center gap-6'>
+                                <ul className='flex justify-start sm:justify-between items-center gap-4 sm:gap-6'>
                                     <li>
                                         <a href={'#'} target='_blank' aria-label='facebook'><FacebookIcon/></a>
                                     </li>
@@ -74,11 +74,11 @@ function Footer({}: Props) {
                             </div>
                         </div>
                     </div>
-                    <div className='px-7 rounded-b-[48px] overflow-hidden'>
+                    <div className='px-1 sm:px-7 rounded-b-3xl sm:rounded-b-[48px] overflow-hidden'>
                         <Image src={'/assets/logo-lg.svg'} alt='Kicks' width={1262} height={313} priority={true} fetchPriority='high' className='objcet-cover'/>
                     </div>
                 </div>
-                <div className='text-center pt-7 pb-4.5'>
+                <div className='text-center py-6 xl:pt-7 xl:pb-4.5'>
                     <p>&copy; All rights reserved</p>
                 </div>
             </div>

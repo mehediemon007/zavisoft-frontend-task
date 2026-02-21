@@ -1,5 +1,5 @@
 interface IconProps {
-  className?: string;
+    className?: string;
 }
 
 export const SearchIcon = ({ className }: IconProps) => (
@@ -18,6 +18,12 @@ export const UserIcon = ({ className }: IconProps) => (
 export const StarIcon = ({ className }: IconProps) => (
     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className={className}>
         <path d="M14.43 10L12.96 5.16001C12.67 4.21001 11.33 4.21001 11.05 5.16001L9.57 10H5.12C4.15 10 3.75 11.25 4.54 11.81L8.18001 14.41L6.75 19.02C6.46 19.95 7.54001 20.7 8.31001 20.11L12 17.31L15.69 20.12C16.46 20.71 17.54 19.96 17.25 19.03L15.82 14.42L19.46 11.82C20.25 11.25 19.85 10.01 18.88 10.01H14.43V10Z" fill="currentColor"/>
+    </svg>
+);
+
+export const StarSmIcon = ({ className }: IconProps) => (
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" className={className}>
+        <path d="M9.62001 6.66675L8.64001 3.44009C8.44668 2.80675 7.55335 2.80675 7.36668 3.44009L6.38001 6.66675H3.41335C2.76668 6.66675 2.50001 7.50009 3.02668 7.87342L5.45335 9.60675L4.50001 12.6801C4.30668 13.3001 5.02668 13.8001 5.54001 13.4068L8.00001 11.5401L10.46 13.4134C10.9733 13.8068 11.6933 13.3068 11.5 12.6868L10.5467 9.61342L12.9733 7.88009C13.5 7.50009 13.2333 6.67342 12.5867 6.67342H9.62001V6.66675Z" fill="#FFA52F"/>
     </svg>
 );
 

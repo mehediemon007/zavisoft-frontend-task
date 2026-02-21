@@ -46,11 +46,11 @@ function NewDrops() {
     }
 
     return (
-        <section className='pb-32'>
+        <section className='pb-4 sm:pb-32'>
             <div className="container">
-                <div className='flex justify-between items-end mb-12'>
-                    <h2 className='max-w-147.25'>Don’t miss out new drops</h2>
-                    <Link href={'#'} className='btn btn-primary'>Shop New Drops</Link>
+                <div className='flex justify-between items-end mb-6 sm:mb-12 gap-4'>
+                    <h2 className='max-w-[256px] sm:max-w-90 md:max-w-105 lg:max-w-135 xl:max-w-147.25'>Don’t miss out new drops</h2>
+                    <Link href={'#'} className='btn btn-primary shrink-0'>Shop New Drops</Link>
                 </div>
                 <div className='grid grid-cols-2 lg:grid-cols-4 gap-4'>
                     {

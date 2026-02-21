@@ -15,12 +15,14 @@ const rubik = Rubik({
     display: 'swap',
     variable: "--font-rubik",
     subsets: ["latin"],
+    weight: ['400', '500', '600', '700'],
 });
 
 const openSans = Open_Sans({
     display: 'swap',
     variable: "--font-open-sans",
     subsets: ["latin"],
+    weight: ['400', '500', '600'],
 });
 
 export const metadata: Metadata = {
@@ -36,7 +38,7 @@ export default function RootLayout({children,}: Readonly<{children: React.ReactN
             >
                 <QueryProvider>
                     <Header/>
-                    <main>
+                    <main className="pt-24 lg:pt-32">
                         {children}
                     </main>
                     <NewsLetter/>

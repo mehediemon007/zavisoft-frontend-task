@@ -19,10 +19,10 @@ function ProductCard({ product } : ProductCardProps) {
                 </Link>
                 <span className='absolute top-2 left-2 text-xs font-semibold font-rubik text-white bg-primary rounded-tl-3xl rounded-br-3xl px-4 py-2'>New</span>
             </div>
-            <h5 className='my-4'>
-                <Link href={`/products/${product.slug}`} className='min-h-14 line-clamp-2 align-middle transition-colors duration-300 ease-in hover:text-primary'>{product.title}</Link>
+            <h5 className='text-base/[1.187] sm:text-2xl/[1] mt-4'>
+                <Link href={`/products/${product.slug}`} className='h-14 line-clamp-3 sm:line-clamp-2 align-middle transition-colors duration-300 ease-in hover:text-primary'>{product.title}</Link>
             </h5>
-            <Link href={`/products/${product.slug}`} className='btn btn-secondary w-full'>View Product -&nbsp;<span className='text-amber-500'>${product.price}</span></Link>
+            <Link href={`/products/${product.slug}`} className='btn btn-secondary w-full text-xs sm:text-sm mt-2 sm:mt-4'>View Product -&nbsp;<span className='text-amber-500'>${product.price}</span></Link>
         </div>
     )
 }

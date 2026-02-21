@@ -31,9 +31,9 @@ const REVIEWS_DATA = [
 
 function Reviews() {
     return (
-        <section className='py-32'>
+        <section className='pt-5 pb-11.5 sm:py-32'>
             <div className="container">
-                <div className='flex justify-between items-center mb-12'>
+                <div className='flex justify-between items-center mb-5 sm:mb-12'>
                     <h2>Reviews</h2>
                     <Link href={'/reviews'} className='btn btn-primary'>See all</Link>
                 </div>

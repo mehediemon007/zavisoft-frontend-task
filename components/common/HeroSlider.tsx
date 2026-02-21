@@ -65,10 +65,10 @@ export const HeroSlider: React.FC = () => {
                             fetchPriority='high' 
                             className="object-cover"
                         />
-                        <div className="absolute inset-0 flex flex-col justify-end p-12 text-white z-10">
+                        <div className="absolute inset-0 flex flex-col justify-end p-4 sm:p-12 text-white z-10">
                             <h2 className="leading-none">NIKE AIR MAX</h2>
-                            <p className='max-w-122.5 text-2xl/[1] font-semibold'>Nike introducing the new air max for everyone&apos;s comfort</p>
-                            <Link href={'#'} className="btn btn-primary mt-6">
+                            <p className='max-w-49.25 sm:max-w-122.5 text-sm/[1.1875] sm:text-2xl/snug font-semibold'>Nike introducing the new air max for everyone&apos;s comfort</p>
+                            <Link href={'#'} className="btn btn-primary min-w-28 mt-2 sm:mt-6">
                                 Shop now
                             </Link>
                         </div>
@@ -76,7 +76,7 @@ export const HeroSlider: React.FC = () => {
                 ))}
             </Swiper>
 
-            <div className="absolute bottom-10 right-10 z-20 flex flex-col gap-4">
+            <div className="absolute bottom-4 sm:bottom-10 right-4 sm:right-10 z-20 flex flex-col gap-4">
                 {inactiveImages.map((img) => (
                     <button
                         key={img.id}

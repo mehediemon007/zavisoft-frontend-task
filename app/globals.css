@@ -8,6 +8,12 @@
 }
 
 @theme {
+  --breakpoint-sm: 36rem;
+  --breakpoint-2xl: 90rem;
+  /* --breakpoint-lg: 62rem;
+  --breakpoint-xl: 75rem;
+  --breakpoint-3xl: 100rem; */
+
   --color-amber-500: #ffa52f;
   --color-gray-800: #232321cc;
 }
@@ -28,16 +34,17 @@
 
   h1 {
     font-size: clamp(3.45rem, -0.056rem + 15.584vw, 13.969rem);
-    line-height: 1;
+    line-height: 1.18570;
     @apply font-bold font-rubik uppercase
   }
 
   h2 {
-    @apply text-[4.625rem]/[.95] font-semibold font-rubik uppercase
+    font-size: clamp(1.375rem, 0.292rem + 4.815vw, 4.625rem);
+    @apply leading-none sm:leading-[.95] font-semibold font-rubik sm:uppercase
   }
 
   h3 {
-    @apply text-5xl/[1] font-semibold font-rubik uppercase
+    @apply text-[32px]/[1.1875] sm:text-5xl/[1.1875] font-semibold font-rubik sm:uppercase
   }
 
   h4 {
@@ -45,7 +52,7 @@
   }
 
   h5{
-    @apply text-2xl/[1] font-semibold font-rubik
+    @apply text-xl/[1.2] sm:text-2xl/[1.125] font-semibold font-rubik
   }
 
   h6 {
@@ -60,7 +67,7 @@
 @layer components {
 
   .btn {
-    @apply inline-flex justify-center items-center w-max h-12 text-sm/[1] font-medium font-rubik text-white tracking-[0.25px] uppercase px-8 rounded-lg
+    @apply inline-flex justify-center items-center w-max h-10 sm:h-12 text-sm font-medium font-rubik text-white tracking-[0.25px] uppercase px-4 sm:px-8 rounded-lg
   }
 
   .btn-primary {
@@ -72,7 +79,7 @@
   }
 
   .footer-widget li a{
-    @apply text-xl/[1] font-semibold font-sans text-gray transition-all duration-300 ease-in-out hover:text-amber-500
+    @apply text-base/snug sm:text-xl/snug font-semibold font-sans text-gray transition-all duration-300 ease-in-out hover:text-amber-500
   }
 }
 
@@ -92,6 +99,18 @@
 }
 
 @layer utilities {
+
+  body::-webkit-scrollbar {
+    @apply w-1.75 h-1.5
+  }
+
+  body::-webkit-scrollbar-track {
+    @apply bg-transparent
+  }
+
+  body::-webkit-scrollbar-thumb {
+    @apply rounded bg-primary;
+  }
 
   .overlay {
     @apply relative

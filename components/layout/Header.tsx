@@ -1,4 +1,6 @@
-import React from 'react'
+'use client';
+
+import React, { useState, useEffect } from 'react'
 import Link from 'next/link';
 import Image from 'next/image';
 
@@ -12,10 +14,49 @@ type Props = {
 }
 
 function Header({}: Props) {
+
+    const [isVisible, setIsVisible] = useState(true);
+    const [isScrolling, setIsScrolling] = useState(false);
+    const [lastScrollY, setLastScrollY] = useState(0);
+
+    useEffect(() => {
+        const controlHeader = () => {
+            const currentScrollY = window.scrollY;
+
+            if (currentScrollY < 10) {
+                setIsVisible(true);
+                setIsScrolling(false);
+            } else {
+                setIsScrolling(true);
+                if (currentScrollY > lastScrollY) {
+                    setIsVisible(false);
+                } else {
+                    setIsVisible(true);
+                }
+            }
+            setLastScrollY(currentScrollY);
+        };
+
+        window.addEventListener('scroll', controlHeader);
+        return () => window.removeEventListener('scroll', controlHeader);
+    }, [lastScrollY]);
+
+
     return (
-        <header className='relative top-8'>
+        <header
+            className={`
+                fixed top-8 left-0 right-0 z-50 w-full transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]
+                ${isVisible ? 'translate-y-0' : '-translate-y-[150%]'}
+            `}
+        >
             <div className="container">
-                <div className="flex justify-between items-center bg-[#fafafa] rounded-3xl px-8">
+                <div className={`
+                    flex justify-between items-center rounded-3xl px-8 transition-colors duration-300
+                    ${!isScrolling 
+                        ? 'bg-[#fafafa]' 
+                        : 'bg-white/90 backdrop-blur-md'
+                    }
+                `}>
                     <nav>
                         <ul className='flex items-center gap-10'>
                             {
