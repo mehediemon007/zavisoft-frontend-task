@@ -10,7 +10,6 @@
 @theme {
   --color-amber-500: #ffa52f;
   --color-gray-800: #232321cc;
-  --font-size-hero: clamp(3.75rem, 0.15rem + 15.35vw, 13.969rem);
 }
 
 @theme inline {
@@ -28,7 +27,9 @@
   }
 
   h1 {
-    @apply text-[13.969rem]/[1] font-bold font-rubik uppercase
+    font-size: clamp(3.75rem, -0.046rem + 15.57vw, 13.969rem);
+    line-height: 1;
+    @apply font-bold font-rubik uppercase
   }
 
   h2 {
