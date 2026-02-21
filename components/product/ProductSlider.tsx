@@ -5,6 +5,9 @@ import ProductCard from './ProductCard';
 
 import { Product } from '@/types/product';
 
+// *** Import Icons
+import { PrevIcon, NextIcon } from '../common/Icons';
+
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/navigation";
@@ -18,14 +21,22 @@ function ProductSlider({ products } : ProductSliderProps) {
     return (
         <>
             <div className="relative w-full h-full">
+                <div className="navigation-btns -top-20 right-0">
+                    <button className="nav-btn nav-prev text-white bg-foreground">
+                        <PrevIcon/>
+                    </button>
+                    <button className="nav-btn nav-next text-white bg-foreground">
+                        <NextIcon/>
+                    </button>
+                </div>
                 <Swiper
                     modules={[Navigation, Pagination, Autoplay, A11y]}
                     spaceBetween={16}
                     slidesPerView={4}
                     slidesPerGroup={2}
                     navigation={{
-                        nextEl: ".swiper-button-next",
-                        prevEl: ".swiper-button-prev",
+                        prevEl: '.nav-prev',
+                        nextEl: '.nav-next',
                     }}
                     pagination={{
                         type: "bullets",

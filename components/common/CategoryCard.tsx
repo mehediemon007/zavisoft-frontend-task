@@ -24,11 +24,11 @@ function CategoryCard({ category } : CategoryCardProps) {
                     />
                 </Link>
             </figure>
-            <div className='absolute w-full h-max left-0 bottom-0 flex justify-between items-end px-12 py-7.5'>
+            <div className='absolute w-full h-max left-0 bottom-0 flex justify-between items-end p-4 sm:px-12 sm:py-7.5'>
                 <h4>
-                    <Link href={`/categories/${category.slug}`} className='uppercase'>{category.name}</Link>
+                    <Link href={`/categories/${category.slug}`} className='uppercase transition-colors duration-100 ease-in hover:text-primary'>{category.name}</Link>
                 </h4>
-                <Link href={`/categories/${category.slug}`} className='btn btn-secondary p-2 mr-3'><ArrowIcon/></Link>
+                <Link href={`/categories/${category.slug}`} className='btn btn-secondary rounded-sm sm:rounded-lg p-2 sm:mr-3'><ArrowIcon/></Link>
             </div>
         </div>
     )

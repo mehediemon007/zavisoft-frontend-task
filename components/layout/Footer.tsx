@@ -14,7 +14,7 @@ function Footer({}: Props) {
                 <div className='bg-foreground rounded-3xl sm:rounded-[48px]'>
                     <div className='flex flex-col sm:flex-row justify-between gap-10 sm:gap-30 p-4 sm:p-10 pb-11.25 sm:pb-24'>
                         <div className='footer-widget'>
-                            <h4 className='text-2xl/[1.167] sm:text-4xl/[1.1945] font-semibold font-rubik text-amber-500 mb-1'>About us</h4>
+                            <h4 className='text-amber-500 mb-1'>About us</h4>
                             <p className='max-w-111.5 text-base/snug sm:text-xl/[1.35] font-semibold font-sans text-gray'>We are the biggest hyperstore in the universe. We got you all cover with our exclusive collections and latest drops.</p>
                         </div>
                         <div className='flex-1 flex flex-col sm:flex-row justify-between gap-6'>

@@ -48,7 +48,7 @@
   }
 
   h4 {
-    @apply text-4xl/[1.194] font-semibold font-rubik
+    @apply text-2xl/[1.167] sm:text-4xl/[1.1945] font-semibold font-rubik
   }
 
   h5{
@@ -138,10 +138,11 @@
   }
 
   .container-left {
-    padding-left: 1rem;
+    padding-inline: 1rem;
 
     @media (min-width: 576px) {
       padding-left: 1.25rem;
+      padding-right: 0;
     }
 
     @media (min-width: 1320px) {
