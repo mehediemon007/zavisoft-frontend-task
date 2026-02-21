@@ -18,25 +18,20 @@ interface MobileMenuProps {
 }
 
 export const MobileMenu = ({ isOpen, onClose, navItems, activeSub, onToggleSub }: MobileMenuProps) => {
-
-    const handleClose = () => {
-        onToggleSub('');
-        onClose();
-    };
-
+    
     useEffect(() => {
         document.body.style.overflow = isOpen ? 'hidden' : 'unset';
         return () => { document.body.style.overflow = 'unset'; };
     }, [isOpen]);
 
     return (
-        <div className={`fixed inset-0 z-100 transition-opacity duration-500 ${isOpen ? 'opacity-100 visible' : 'opacity-0 invisible'}`}>
-            <div className="absolute inset-0 bg-black/40 backdrop-blur-sm" onClick={handleClose} />
+        <div className={`fixed inset-0 z-100 transition-all duration-500 ${isOpen ? 'opacity-100 visible' : 'opacity-0 invisible'}`}>
+            <div className="absolute inset-0 bg-black/40 backdrop-blur-sm" onClick={onClose} />
             <aside className={`absolute left-0 top-0 h-full w-[85%] max-w-85 bg-white transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${isOpen ? 'translate-x-0' : '-translate-x-full'}`}>
                 <div className="p-6 flex flex-col h-full overflow-y-auto">
                     <div className="flex justify-between items-center mb-8">
                         <Image src={'/assets/logo.svg'} alt='Kicks' width={90} height={24} />
-                        <button onClick={handleClose} aria-label="Close menu">
+                        <button onClick={onClose} aria-label="Close menu">
                             <XIcon className="w-6 h-6" />
                         </button>
                     </div>
@@ -46,7 +41,7 @@ export const MobileMenu = ({ isOpen, onClose, navItems, activeSub, onToggleSub }
                             {navItems.map((item) => (
                                 <li key={item.label} className="flex flex-col border-b border-gray-50 pb-2">
                                     <div className="flex justify-between items-center">
-                                        <Link href={item.href} className="text-lg font-semibold font-rubik uppercase" onClick={handleClose}>
+                                        <Link href={item.href} className="text-lg font-semibold font-rubik uppercase" onClick={onClose}>
                                             {item.label}
                                         </Link>
                                         {item.hasDropdown && (
@@ -75,7 +70,7 @@ export const MobileMenu = ({ isOpen, onClose, navItems, activeSub, onToggleSub }
                                                         <Link
                                                             href={sub.href}
                                                             className="text-gray-600 font-medium font-rubik"
-                                                            onClick={handleClose}
+                                                            onClick={onClose}
                                                         >
                                                             {sub.label}
                                                         </Link>

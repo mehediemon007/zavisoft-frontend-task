@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
 import { Rubik, Open_Sans } from "next/font/google";
 
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
 import "./globals.css";
 
 import Header from "@/components/layout/Header";

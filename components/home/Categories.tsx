@@ -1,9 +1,10 @@
 'use client';
 import React from 'react'
+import dynamic from 'next/dynamic';
 import { useQuery } from '@tanstack/react-query';
 import { fetchCategories } from '@/services/product-service';
 
-import CategorySlider from '../common/CategorySlider';
+const CategorySlider = dynamic(()=> import('../common/CategorySlider'));
 
 function Categories() {
 
@@ -22,13 +23,13 @@ function Categories() {
 
 
     return (
-        <section className='bg-foreground pt-22.5'>
+        <section className='w-full bg-foreground overflow-hidden pt-22.5'>
             <div className="container">
-                <div className='flex justify-between items-end mb-12'>
+                <div className='w-max mb-12'>
                     <h2 className='text-white'>Categories</h2>
                 </div>
             </div>
-            <div className='container'>
+            <div className='w-full container-left'>
                 <CategorySlider categories={categories}/>
             </div>
         </section>

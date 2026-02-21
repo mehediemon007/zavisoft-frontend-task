@@ -48,7 +48,7 @@
   }
 
   h4 {
-    @apply text-4xl/[1] font-semibold font-rubik
+    @apply text-4xl/[1.194] font-semibold font-rubik
   }
 
   h5{
@@ -81,6 +81,18 @@
 
   .btn-secondary {
     @apply bg-foreground
+  }
+
+  .navigation-btns {
+    @apply absolute -top-26 right-37.5 flex items-center gap-4
+  }
+
+  .nav-btn {
+    @apply inline-flex justify-center items-center w-10 h-10 text-foreground bg-gray rounded-lg transition-colors duration-300 hover:bg-primary hover:text-white
+  }
+  
+  .nav-btn.swiper-button-disabled {
+    @apply opacity-50 cursor-not-allowed hover:bg-gray hover:text-foreground
   }
 
   .footer-widget li a{
@@ -123,5 +135,21 @@
 
   .overlay::before{
     @apply inset-0 absolute top-0 left-0 content-[''] w-full h-full
+  }
+
+  .container-left {
+    padding-left: 1rem;
+
+    @media (min-width: 576px) {
+      padding-left: 1.25rem;
+    }
+
+    @media (min-width: 1320px) {
+      padding-left: calc(((100vw - 1320px) / 2) + 1.25rem);
+    }
+
+    @media (min-width: 1440px) {
+      padding-left: calc((100vw - 1320px) / 2);
+    }
   }
 }
