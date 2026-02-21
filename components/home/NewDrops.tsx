@@ -52,7 +52,7 @@ function NewDrops() {
                     <h2 className='max-w-147.25'>Don’t miss out new drops</h2>
                     <Link href={'#'} className='btn btn-primary'>Shop New Drops</Link>
                 </div>
-                <div className='grid grid-cols-4 gap-4'>
+                <div className='grid grid-cols-2 lg:grid-cols-4 gap-4'>
                     {
                         products.map((product) => (
                             <ProductCard key={product.id} product={product}/>

@@ -11,9 +11,9 @@ interface ProductCardProps {
 function ProductCard({ product } : ProductCardProps) {
     return (
         <div>
-            <div className='relative bg-white rounded-[28px] p-2 group'>
+            <div className='relative bg-white rounded-2xl sm:rounded-[28px] p-2 group'>
                 <Link href={`/products/${product.slug}`}>
-                    <figure className='rounded-3xl overflow-hidden'>
+                    <figure className='rounded-xl sm:rounded-3xl overflow-hidden'>
                         <Image src={product.images[0]} alt={product.title} width={302} height={334} className='transition-transform duration-300 ease-in object-cover group-hover:scale-105'/>
                     </figure>
                 </Link>

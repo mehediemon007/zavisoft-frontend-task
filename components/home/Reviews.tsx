@@ -37,7 +37,7 @@ function Reviews() {
                     <h2>Reviews</h2>
                     <Link href={'/reviews'} className='btn btn-primary'>See all</Link>
                 </div>
-                <div className='grid grid-cols-3 gap-4'>
+                <div className='grid grid-cols-1 sm:grid-cols-3 gap-4'>
                     {REVIEWS_DATA.map(review => (
                         <ReviewCard key={review.id} {...review}/>
                     ))}

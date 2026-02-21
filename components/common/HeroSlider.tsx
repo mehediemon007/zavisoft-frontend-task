@@ -42,7 +42,7 @@ export const HeroSlider: React.FC = () => {
     };
 
     return (
-        <div className="relative overflow-hidden rounded-[64px]">
+        <div className="relative overflow-hidden rounded-3xl sm:rounded-[64px]">
                 
             {/* Main Slider */}
             <Swiper
@@ -53,7 +53,7 @@ export const HeroSlider: React.FC = () => {
                 onSwiper={(swiper) => (mainSwiperRef.current = swiper)}
                 onSlideChange={(swiper) => setActiveIdx(swiper.realIndex)}
                 modules={[Navigation, Autoplay, EffectFade]}
-                className='w-full h-187.5'
+                className='w-full h-95.5 sm:h-187.5'
             >
                 {images.map((img) => (
                     <SwiperSlide key={img.id} className="overlay before:bg-[linear-gradient(180deg,rgba(0,0,0,0)_31.12%,rgba(0,0,0,0.5)_66.06%)]">
@@ -81,7 +81,7 @@ export const HeroSlider: React.FC = () => {
                     <button
                         key={img.id}
                         onClick={() => handleThumbClick(img.id)}
-                        className="relative w-40 h-40 border-3 border-gray rounded-4xl overflow-hidden"
+                        className="relative w-16 sm:w-40 h-16 sm:h-40 border sm:border-3 border-gray rounded-lg sm:rounded-4xl overflow-hidden"
                     >
                         <Image 
                             src={img.url} 
