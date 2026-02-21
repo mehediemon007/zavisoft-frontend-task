@@ -38,7 +38,7 @@ export default function RootLayout({children,}: Readonly<{children: React.ReactN
             >
                 <QueryProvider>
                     <Header/>
-                    <main className="pt-24 lg:pt-32">
+                    <main className="pt-21 lg:pt-32">
                         {children}
                     </main>
                     <NewsLetter/>
