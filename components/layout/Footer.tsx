@@ -12,10 +12,10 @@ function Footer({}: Props) {
         <footer className='relative -mt-50 z-20'>
             <div className="container">
                 <div className='bg-foreground rounded-3xl sm:rounded-[48px]'>
-                    <div className='flex flex-col sm:flex-row justify-between gap-10 sm:gap-30 p-4 sm:p-10 pb-11.25 sm:pb-24'>
+                    <div className='flex flex-col lg:flex-row justify-between gap-10 lg:gap-18 xl:gap-30 p-4 sm:p-10 pb-11.25 sm:pb-18 lg:pb-24'>
                         <div className='footer-widget'>
                             <h4 className='text-amber-500 mb-1'>About us</h4>
-                            <p className='max-w-111.5 text-base/snug sm:text-xl/[1.35] font-semibold font-sans text-gray'>We are the biggest hyperstore in the universe. We got you all cover with our exclusive collections and latest drops.</p>
+                            <p className='w-full sm:max-w-111.5 text-base/snug sm:text-xl/[1.35] font-semibold font-sans text-gray'>We are the biggest hyperstore in the universe. We got you all cover with our exclusive collections and latest drops.</p>
                         </div>
                         <div className='flex-1 flex flex-col sm:flex-row justify-between gap-6'>
                             <div className='footer-widget'>
@@ -57,7 +57,7 @@ function Footer({}: Props) {
                             </div>
                             <div className='footer-widget'>
                                 <h5 className='text-amber-500 mb-4'>Follow us</h5>
-                                <ul className='flex justify-start sm:justify-between items-center gap-4 sm:gap-6'>
+                                <ul className='flex justify-start lg:justify-between items-center gap-4 sm:gap-6'>
                                     <li>
                                         <a href={'#'} target='_blank' aria-label='facebook'><FacebookIcon/></a>
                                     </li>

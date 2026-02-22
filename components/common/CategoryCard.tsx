@@ -1,9 +1,12 @@
 import React from 'react'
 import Link from 'next/link';
-import Image from 'next/image';
+import ImageWithFallback from './ImageWithFallback';
 
 import { Category } from '@/types/product';
+
+// *** Import Icons
 import { ArrowIcon } from './Icons';
+
 
 interface CategoryCardProps {
     category: Category;
@@ -14,13 +17,11 @@ function CategoryCard({ category } : CategoryCardProps) {
         <div className='relative bg-white in-[.swiper-slide-active]:bg-[#ECEEF0]'>
             <figure className='relative w-full aspect-4/5 max-w-120 max-h-150 overflow-hidden mx-auto'>
                 <Link href={`/categories/${category.slug}`} className="block w-full h-full">
-                    <Image 
+                    <ImageWithFallback
                         src={category.image} 
                         alt={category.name} 
                         fill
                         sizes="(max-width: 768px) 50vw, 33vw"
-                        className="object-cover"
-                        priority={false}
                     />
                 </Link>
             </figure>

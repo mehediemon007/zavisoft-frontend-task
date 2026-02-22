@@ -6,25 +6,25 @@ export interface NavItem {
 }
 
 export const NAV_ITEMS: NavItem[] = [
-    { label: 'New Drops 🔥', href: '/' },
+    { label: 'New Drops 🔥', href: '/products' },
     { 
         label: 'Men', 
-        href: '#', 
+        href: '/products?category=men', 
         hasDropdown: true,
         subItems: [
-            { label: 'Shirts', href: '#' },
-            { label: 'Pants', href: '#' },
-            { label: 'Shoes', href: '#' },
+            { label: 'Shirts', href: '/products?category=shirts' },
+            { label: 'Pants', href: '/products?category=pants' },
+            { label: 'Shoes', href: '/products?category=shoes' },
         ]
     },
     { 
         label: 'Women', 
-        href: '#', 
+        href: '/products?category=women', 
         hasDropdown: true,
         subItems: [
-            { label: 'Skirts', href: '#' },
-            { label: 'Jewelry', href: '#' },
-            { label: 'Shoes', href: '#' },
+            { label: 'Skirts', href: '/products?category=skirts' },
+            { label: 'Jewelry', href: '/products?category=jewelry' },
+            { label: 'Shoes', href: '/products?category=shoes' },
         ]
     },
 ];

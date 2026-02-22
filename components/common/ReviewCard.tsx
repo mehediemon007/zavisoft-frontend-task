@@ -1,6 +1,6 @@
 import React from 'react'
-import Image from 'next/image';
 import { StarIcon } from './Icons';
+import ImageWithFallback from './ImageWithFallback';
 
 interface ReviewCardProps {
     title: string;
@@ -20,7 +20,7 @@ function ReviewCard({title, content, rating, clientImg, reviewImg} : ReviewCardP
                         <p className='w-full sm:max-w-73.25 text-sm/[1.35] sm:text-base/snug text-gray-800'>{content}</p>
                     </div>
                     <div className="shrink-0 relative w-12 h-12 lg:w-16 lg:h-16">
-                        <Image 
+                        <ImageWithFallback 
                             src={clientImg} 
                             alt='client1' 
                             fill
@@ -39,7 +39,16 @@ function ReviewCard({title, content, rating, clientImg, reviewImg} : ReviewCardP
                 </div>
             </div>
             <figure className='rounded-b-2xl sm:rounded-b-4xl overflow-hidden'>
-                <Image src={reviewImg} alt='Reviw1' width={430} height={325} className="object-cover rounded-b-2xl sm:rounded-b-4xl"/>
+                <figure className="relative aspect-430/325 w-full overflow-hidden rounded-b-2xl sm:rounded-b-4xl bg-gray-50">
+                    <ImageWithFallback
+                        src={reviewImg} 
+                        alt={`Review for ${title}`}
+                        fill
+                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 430px" 
+                        className="object-cover"
+                    />
+                </figure>
+                    
             </figure>
         </div>
     )

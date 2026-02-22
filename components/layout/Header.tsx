@@ -19,7 +19,7 @@ function Header() {
     
     useEffect(() => {
 
-        const mediaQuery = window.matchMedia('(max-width: 639px)');
+        const mediaQuery = window.matchMedia('(max-width: 1023px)');
         
         const handleMediaChange = (e: MediaQueryListEvent | MediaQueryList) => {
             setIsMobile(e.matches);
@@ -61,15 +61,15 @@ function Header() {
         <>
             <header className={`fixed top-8 left-0 right-0 z-50 w-full transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] ${isVisible ? 'translate-y-0' : '-translate-y-[150%]'}`}>
                 <div className="container">
-                    <div className={`flex justify-between items-center rounded-xl sm:rounded-3xl p-4 sm:px-8 sm:py-0 transition-all duration-300 ${!isScrolling ? 'bg-[#fafafa]' : 'bg-white/90 backdrop-blur-md'}`}>
+                    <div className={`flex justify-between items-center rounded-xl lg:rounded-3xl p-4 sm:px-8 lg:py-0 transition-all duration-300 ${!isScrolling ? 'bg-[#fafafa]' : 'bg-white/90 backdrop-blur-md'}`}>
                         
                         <div className="flex-1">
 
-                            <button onClick={() => setIsMenuOpen(true)} className='block sm:hidden'>
-                                <MenuIcon/>
+                            <button onClick={() => setIsMenuOpen(true)} className={`${isMobile ? 'block' : 'hidden'}`}>
+                                <MenuIcon className='w-5 sm:w-6 h-5 sm:h-6'/>
                             </button>
 
-                            <nav className='hidden sm:block'>
+                            <nav className={`${isMobile ? 'hidden' : 'block'}`}>
                                 <ul className='flex items-center gap-10'>
                                     {NAV_ITEMS.map(item => (
                                         <li key={item.label} className='relative group'>
@@ -100,14 +100,14 @@ function Header() {
                         </div>
 
                         <div className='flex-1'>
-                            <div className='flex justify-end items-center gap-2 sm:gap-10'>
-                                <Link href={'#'}>
+                            <div className='flex justify-end items-center gap-2 sm:gap-4 lg:gap-10'>
+                                <button aria-label='Search Product'>
                                     <SearchIcon className='w-4 sm:w-7 h-4 sm:h-7'/>
-                                </Link>
-                                <Link href={'#'}>
+                                </button>
+                                <Link href={'/profile'}>
                                     <UserIcon className='w-4 sm:w-6 h-4 sm:h-6'/>
                                 </Link>
-                                <Link href={'#'} className='relative inline-flex justify-center items-center w-5 sm:w-8 h-5 sm:h-8 bg-amber-500 rounded-full'>
+                                <Link href={'/cart'} className='relative inline-flex justify-center items-center w-5 sm:w-8 h-5 sm:h-8 bg-amber-500 rounded-full'>
                                     <span className='text-sm/[1] sm:text-base/[1] font-semibold'>0</span>
                                 </Link>
                             </div>

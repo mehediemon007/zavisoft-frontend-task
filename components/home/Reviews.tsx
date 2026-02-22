@@ -31,13 +31,13 @@ const REVIEWS_DATA = [
 
 function Reviews() {
     return (
-        <section className='pt-5 pb-11.5 sm:py-32'>
+        <section className='pt-5 pb-11.5 sm:py-20 lg:py-32'>
             <div className="container">
-                <div className='flex justify-between items-center mb-5 sm:mb-12'>
+                <div className='flex justify-between items-center mb-5 sm:mb-8 lg:mb-12'>
                     <h2>Reviews</h2>
                     <Link href={'/reviews'} className='btn btn-primary'>See all</Link>
                 </div>
-                <div className='grid grid-cols-1 sm:grid-cols-3 gap-4'>
+                <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4'>
                     {REVIEWS_DATA.map(review => (
                         <ReviewCard key={review.id} {...review}/>
                     ))}

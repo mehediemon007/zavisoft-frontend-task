@@ -25,7 +25,7 @@ function Categories() {
     return (
         <section className='w-full bg-foreground overflow-hidden pt-22.5'>
             <div className="container">
-                <div className='w-max mb-12'>
+                <div className='w-max sm:mb-8 lg:mb-12'>
                     <h2 className='text-white'>Categories</h2>
                 </div>
             </div>

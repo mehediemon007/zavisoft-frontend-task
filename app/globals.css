@@ -8,12 +8,7 @@
 }
 
 @theme {
-  --breakpoint-sm: 36rem;
   --breakpoint-2xl: 90rem;
-  /* --breakpoint-lg: 62rem;
-  --breakpoint-xl: 75rem;
-  --breakpoint-3xl: 100rem; */
-
   --color-amber-500: #ffa52f;
   --color-gray-800: #232321cc;
 }
@@ -134,7 +129,7 @@
   }
 
   .overlay::before{
-    @apply inset-0 absolute top-0 left-0 content-[''] w-full h-full
+    @apply inset-0 absolute top-0 left-0 content-[''] w-full h-full z-10
   }
 
   .container-left {
