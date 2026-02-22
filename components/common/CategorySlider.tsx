@@ -22,7 +22,6 @@ interface CategorySliderProps {
 
 function CategorySlider({ categories }: CategorySliderProps) {
 
-    // If there's no data yet, don't break the page
     if (!categories || categories.length === 0) return null;
 
     const categoryPairs = categories.reduce((acc, _, i) => 
@@ -31,11 +30,11 @@ function CategorySlider({ categories }: CategorySliderProps) {
 
     return (
         <div className="relative">
-            <div className="navigation-btns navigation-btns-right">
-                <button className="nav-btn nav-prev">
+            <div className="navigation-btns navigation-btns-right -top-14 sm:-top-18.5 lg:-top-22 xl:-top-26">
+                <button className="nav-btn nav-prev text-foreground">
                     <PrevIcon/>
                 </button>
-                <button className="nav-btn nav-next">
+                <button className="nav-btn nav-next text-foreground bg-white md:bg-gray">
                     <NextIcon/>
                 </button>
             </div>
@@ -48,10 +47,11 @@ function CategorySlider({ categories }: CategorySliderProps) {
                     nextEl: '.nav-next',
                 }}
                 loop={true}
-                // autoplay={{
-                //     delay: 3000,
-                //     disableOnInteraction: false,
-                // }}
+                autoplay={{
+                    delay: 3000,
+                    disableOnInteraction: false,
+                }}
+                speed={1000}
             >
                 {categoryPairs.map((pair, index) => (
                     <SwiperSlide key={index}>

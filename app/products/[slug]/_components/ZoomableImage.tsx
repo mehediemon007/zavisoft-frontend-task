@@ -1,8 +1,8 @@
 'use client';
 
 import { useState } from 'react';
-import Image from 'next/image';
 import { cn } from '@/lib/utils';
+import ImageWithFallback from '@/components/common/ImageWithFallback';
 
 interface ZoomableImageProps {
     src: string;
@@ -32,7 +32,7 @@ export function ZoomableImage({ src, alt, width, height, priority, sizes, classN
             onMouseEnter={() => setIsZoomed(true)}
             onMouseLeave={() => setIsZoomed(false)}
         >
-            <Image 
+            <ImageWithFallback 
                 src={src} 
                 alt={alt}
                 width={width} 

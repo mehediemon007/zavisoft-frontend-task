@@ -1,11 +1,16 @@
 'use client';
+import dynamic from 'next/dynamic';
 import { useQuery } from '@tanstack/react-query';
-import ProductSlider from '@/components/product/ProductSlider';
 import { fetchRelatedProducts } from '@/services/product-service';
 import { Product } from '@/types/product';   
 
 
+const ProductSlider = dynamic(()=>import('@/components/product/ProductSlider'));
+
 export default function RelatedProducts({ slug }: { slug: string }) {
+
+
+
     const { data: relatedProducts, isLoading } = useQuery<Product[]>({
         queryKey: ['related-products', slug],
         queryFn: () => fetchRelatedProducts(slug),
@@ -15,9 +20,9 @@ export default function RelatedProducts({ slug }: { slug: string }) {
     if (!relatedProducts || relatedProducts.length === 0) return null;
 
     return (
-        <section className='py-32'>
+        <section className='py-6 sm:py-8 lg:pt-22.5 xl:pt-32 lg:pb-15'>
             <div className="container">
-                <h3 className='mb-8'>You may also like</h3>
+                <h3 className='text-2xl/[1.167] sm:text-5xl/[1.1875] mb-6 sm:mb-8 normal-case'>You may also like</h3>
                 <div className="related-slider">
                     <ProductSlider products={relatedProducts} />
                 </div>

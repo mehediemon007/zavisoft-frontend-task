@@ -18,21 +18,28 @@ interface ProductSliderProps {
 }
 
 function ProductSlider({ products } : ProductSliderProps) {
+
+    if (!products || products.length === 0) return null;
+
+    const productPairs = products.reduce((acc, _, i) => 
+        i % 2 === 0 ? [...acc, products.slice(i, i + 2)] : acc
+    , [] as typeof products[]);
+    
     return (
         <>
             <div className="relative w-full h-full">
-                <div className="navigation-btns -top-20 right-0">
-                    <button className="nav-btn nav-prev text-white bg-foreground">
+                <div className="navigation-btns">
+                    <button className="nav-btn nav-prev">
                         <PrevIcon/>
                     </button>
-                    <button className="nav-btn nav-next text-white bg-foreground">
+                    <button className="nav-btn nav-next">
                         <NextIcon/>
                     </button>
                 </div>
                 <Swiper
                     modules={[Navigation, Pagination, Autoplay, A11y]}
                     spaceBetween={16}
-                    slidesPerView={4}
+                    slidesPerView={2}
                     slidesPerGroup={2}
                     navigation={{
                         prevEl: '.nav-prev',
@@ -45,16 +52,28 @@ function ProductSlider({ products } : ProductSliderProps) {
                         bulletClass: "custom-pagination-bullet",
                         bulletActiveClass: "custom-pagination-bullet-active",
                     }}
-                    speed={500}
+                    autoplay={{
+                        delay: 3000,
+                        disableOnInteraction: false,
+                    }}
+                    loop={true}
+                    speed={1000}
                 >
                     {
-                        products.map((product) => (
-                            <SwiperSlide key={product.id}>
-                                <ProductCard product={product}/>
+                        productPairs.map((pair, index) => (
+                            <SwiperSlide key={index}>
+                                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-4">
+                                    {pair.map((product) => (
+                                        <div key={product.id} className="col-span-1">
+                                            <ProductCard product={product}/>
+                                        </div>
+                                    ))}
+                                </div>
                             </SwiperSlide>
                         ))
                     }
                 </Swiper>
+                <div className="custom-pagination flex justify-center items-center gap-2 pt-6 sm:pt-8" />
             </div>
         </>
     )

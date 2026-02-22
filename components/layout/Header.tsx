@@ -61,15 +61,15 @@ function Header() {
         <>
             <header className={`fixed top-8 left-0 right-0 z-50 w-full transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] ${isVisible ? 'translate-y-0' : '-translate-y-[150%]'}`}>
                 <div className="container">
-                    <div className={`flex justify-between items-center rounded-xl lg:rounded-3xl p-4 sm:px-8 lg:py-0 transition-all duration-300 ${!isScrolling ? 'bg-[#fafafa]' : 'bg-white/90 backdrop-blur-md'}`}>
+                    <div className={`flex justify-between items-center h-13 sm:h-16 lg:h-24 rounded-xl lg:rounded-3xl px-4 sm:px-8 transition-all duration-300 ${!isScrolling ? 'bg-[#fafafa]' : 'bg-white/90 backdrop-blur-md'}`}>
                         
                         <div className="flex-1">
 
-                            <button onClick={() => setIsMenuOpen(true)} className={`${isMobile ? 'block' : 'hidden'}`}>
+                            <button onClick={() => setIsMenuOpen(true)} className='block lg:hidden'>
                                 <MenuIcon className='w-5 sm:w-6 h-5 sm:h-6'/>
                             </button>
 
-                            <nav className={`${isMobile ? 'hidden' : 'block'}`}>
+                            <nav className='hidden lg:block'>
                                 <ul className='flex items-center gap-10'>
                                     {NAV_ITEMS.map(item => (
                                         <li key={item.label} className='relative group'>
@@ -93,8 +93,8 @@ function Header() {
 
                         </div>
 
-                        <div className="flex justify-center">
-                            <Link href={'/'} className='relative h-5 sm:h-8 aspect-128/32 block'>
+                        <div className="flex justify-center items-center">
+                            <Link href={'/'} className='relative h-5 lg:h-8 aspect-128/32 block'>
                                 <Image src={'/assets/logo.svg'} alt='Kicks' fill priority className='object-contain'/>
                             </Link>
                         </div>

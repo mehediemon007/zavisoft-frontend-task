@@ -68,7 +68,7 @@ export const HeroSlider: React.FC = () => {
                         <div className="absolute inset-0 flex flex-col justify-end p-4 md:p-8 lg:p-12 text-white z-10">
                             <h2 className="leading-none">NIKE AIR MAX</h2>
                             <p className='max-w-49.25 md:max-w-70 lg:max-w-122.5 text-sm/[1.357] md:text-base/[1.1875] lg:text-2xl/snug font-semibold'>Nike introducing the new air max for everyone&apos;s comfort</p>
-                            <Link href={'#'} className="btn btn-primary min-w-28 h-8 sm:h-10 lg:h-12 mt-2 sm:mt-2.5 lg:mt-6">
+                            <Link href={'#'} className="btn btn-primary min-w-28 h-8 sm:h-10 lg:h-12 font-inter sm:font-rubik mt-2 sm:mt-2.5 lg:mt-6">
                                 Shop now
                             </Link>
                         </div>

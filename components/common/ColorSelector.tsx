@@ -27,7 +27,7 @@ export default function ColorSelector({ selectedColor, onColorSelect }: ColorSel
 
     return (
         
-        <div className="flex justify-start items-center flex-wrap gap-4 pl-2">
+        <div className="flex justify-start items-center flex-wrap gap-4 pl-2 pt-2">
             {PRODUCT_COLORS.map((color) => (
 
                 <label key={color.hex} className="relative">
@@ -43,7 +43,7 @@ export default function ColorSelector({ selectedColor, onColorSelect }: ColorSel
 
                     <span
                         className={cn(
-                            "block w-8 h-8 rounded-full cursor-pointer peer-checked:ring-3 peer-checked:ring-offset-4 peer-checked:ring-offset-background",
+                            "block w-6 sm:w-8 h-6 sm:h-8 rounded-full cursor-pointer peer-checked:ring-3 peer-checked:ring-offset-4 peer-checked:ring-offset-background",
                         )}
 
                         style={{

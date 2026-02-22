@@ -2,7 +2,7 @@ import React from 'react';
 import { dehydrate, HydrationBoundary, QueryClient } from '@tanstack/react-query';
 import { fetchProductBySlug, fetchRelatedProducts } from '@/services/product-service';
 
-import ProductDetails from '@/components/product/ProductDetails';
+import ProductDetails from './_components/ProductDetails';
 import RelatedProducts from './_components/RelatedProducts';
 
 export default async function Page({ params }: { params: { slug: string } }) {

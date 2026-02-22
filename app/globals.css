@@ -20,6 +20,7 @@
   --color-gray: var(--gray);
   --font-rubik: var(--font-rubik);
   --font-sans: var(--font-open-sans);
+  --font-inter: var(--font-inter);
 }
 
 @layer base {
@@ -79,19 +80,48 @@
   }
 
   .navigation-btns {
-    @apply absolute -top-14 sm:-top-18.5 lg:-top-22 2xl:-top-26 right-0 md:right-5 2xl:right-37.5 flex items-center gap-2 lg:gap-4
-  }
-
-  .container-left .navigation-btns {
-    @apply -top-14 sm:-top-18.5 lg:-top-22 xl:-top-26
+    @apply absolute -top-14 sm:-top-18.5 right-0 flex items-center gap-2 lg:gap-4
   }
 
   .nav-btn {
-    @apply inline-flex justify-center items-center w-8 sm:w-10 h-8 sm:h-10 text-foreground bg-gray rounded-lg transition-colors duration-300 hover:bg-primary hover:text-white
+    @apply inline-flex justify-center items-center w-8 sm:w-10 h-8 sm:h-10 text-white rounded-lg transition-colors duration-300 hover:bg-primary hover:text-white
+  }
+
+  .nav-btn.nav-next {
+    @apply bg-foreground
+  }
+
+  .nav-btn.nav-prev {
+    @apply bg-[#858582]
   }
   
   .nav-btn.swiper-button-disabled {
-    @apply opacity-50 cursor-not-allowed hover:bg-gray hover:text-foreground
+    @apply opacity-50 cursor-not-allowed hover:bg-foreground hover:text-foreground
+  }
+
+  .product-thumbMainSlider .swiper-pagination{
+    @apply left-1/2! bottom-3.5! inline-flex justify-center items-center w-max! bg-white! rounded-sm px-2 py-1 -translate-x-1/2!
+  }
+
+  .swiper-pagination-bullet{
+    @apply relative w-1.5 h-1.5 bg-[#23232166]! opacity-100!
+  }
+
+  .swiper-pagination-bullet-active{
+    @apply bg-primary!
+  }
+
+  .custom-pagination-bullet {
+    @apply relative w-8 sm:w-10 h-1 sm:h-1.5 bg-[#23232140] rounded-lg cursor-pointer overflow-hidden transition-all duration-300 ease-in
+  }
+
+  .custom-pagination-bullet::before {
+    @apply absolute top-0 left-0 w-full h-full content-[''] bg-primary rounded-lg -translate-x-full translate-y-0;
+  }
+
+  .custom-pagination-bullet-active::before {
+    @apply translate-x-0;
+    animation: bullet-fill-loading 3s ease-in-out;
   }
 
   .footer-widget li a{
@@ -173,3 +203,14 @@
     }
   }
 }
+
+
+@keyframes bullet-fill-loading {
+  0% {
+      transform: translateX(-100%);
+  }
+  100% {
+      transform: translateX(0);
+  }
+}
+
