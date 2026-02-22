@@ -20,7 +20,7 @@ interface ImageItem {
 }
 
 const images: ImageItem[] = [
-    { id: 1, url: "/assets/banner1.webp", alt: "Nike Shoe" },
+    { id: 1, url: "/assets/hero1.webp", alt: "Nike Shoe" },
     { id: 2, url: "/assets/hero2.webp", alt: "Nike Shoe Pair" },
     { id: 3, url: "/assets/hero3.webp", alt: "Nike Shoe Backview" },
 ];
