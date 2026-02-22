@@ -25,42 +25,47 @@ function CategorySlider({ categories }: CategorySliderProps) {
     // If there's no data yet, don't break the page
     if (!categories || categories.length === 0) return null;
 
-    return (
-        <>
-            <div className="container relative">
-                <div className="navigation-btns">
-                    <button className="nav-btn nav-prev">
-                        <PrevIcon/>
-                    </button>
-                    <button className="nav-btn nav-next">
-                        <NextIcon/>
-                    </button>
-                </div>
-            </div>
-            <div className="rounded-tl-[64px] overflow-hidden">
-                <Swiper
-                    modules={[Navigation, Pagination, Autoplay, A11y]}
-                    slidesPerView={2}
-                    spaceBetween={-1}
-                    navigation={{
-                        prevEl: '.nav-prev',
-                        nextEl: '.nav-next',
-                    }}
-                    loop={true}
-                    autoplay={{
-                        delay: 3000,
-                        disableOnInteraction: false,
-                    }}
-                >
-                    {categories.map((category) => (
-                        <SwiperSlide key={category.id}>
-                            <CategoryCard category={category} />
-                        </SwiperSlide>
-                    ))}
-                </Swiper>
-            </div>
-        </>
+    const categoryPairs = categories.reduce((acc, _, i) => 
+        i % 2 === 0 ? [...acc, categories.slice(i, i + 2)] : acc
+    , [] as typeof categories[]);
 
+    return (
+        <div className="relative">
+            <div className="navigation-btns navigation-btns-right">
+                <button className="nav-btn nav-prev">
+                    <PrevIcon/>
+                </button>
+                <button className="nav-btn nav-next">
+                    <NextIcon/>
+                </button>
+            </div>
+            <Swiper
+                modules={[Navigation, Pagination, Autoplay, A11y]}
+                slidesPerView={1}
+                spaceBetween={0}
+                navigation={{
+                    prevEl: '.nav-prev',
+                    nextEl: '.nav-next',
+                }}
+                loop={true}
+                // autoplay={{
+                //     delay: 3000,
+                //     disableOnInteraction: false,
+                // }}
+            >
+                {categoryPairs.map((pair, index) => (
+                    <SwiperSlide key={index}>
+                        <div className="grid grid-cols-1 md:grid-cols-2 rounded-tl-3xl md:rounded-tl-[64px] overflow-hidden">
+                            {pair.map((category, indx) => (
+                                <div key={category.id} className="col-span-1">
+                                    <CategoryCard category={category} isHighlighted={indx === 0}/>
+                                </div>
+                            ))}
+                        </div>
+                    </SwiperSlide>
+                ))}
+            </Swiper>
+        </div>
     );
 }
 

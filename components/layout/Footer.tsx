@@ -59,16 +59,16 @@ function Footer({}: Props) {
                                 <h5 className='text-amber-500 mb-4'>Follow us</h5>
                                 <ul className='flex justify-start lg:justify-between items-center gap-4 sm:gap-6'>
                                     <li>
-                                        <a href={'#'} target='_blank' aria-label='facebook'><FacebookIcon/></a>
+                                        <a href='https://www.facebook.com/' target='_blank' aria-label='facebook'><FacebookIcon/></a>
                                     </li>
                                     <li>
-                                        <a href={'#'} target='_blank' aria-label='instagram'><InstagramIcon/></a>
+                                        <a href='https://www.instagram.com/' target='_blank' aria-label='instagram'><InstagramIcon/></a>
                                     </li>
                                     <li>
-                                        <a href={'#'} target='_blank' aria-label='twitter'><TwitterIcon/></a>
+                                        <a href='https://x.com/' target='_blank' aria-label='twitter'><TwitterIcon/></a>
                                     </li>
                                     <li>
-                                        <a href={'#'} target='_blank' aria-label='tiktok'><TiktokIcon/></a>
+                                        <a href='https://www.tiktok.com/en/' target='_blank' aria-label='tiktok'><TiktokIcon/></a>
                                     </li>
                                 </ul>
                             </div>

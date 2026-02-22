@@ -46,7 +46,7 @@ function NewDrops() {
     }
 
     return (
-        <section className='pb-4 sm:pb-20 lg:pb-32'>
+        <section className='pb-4 sm:pb-20 xl:pb-32'>
             <div className="container">
                 <div className='flex justify-between items-end mb-6 sm:mb-8 lg:mb-12 gap-4'>
                     <h2 className='max-w-[256px] sm:max-w-90 md:max-w-105 lg:max-w-135 xl:max-w-147.25'>Don’t miss out new drops</h2>

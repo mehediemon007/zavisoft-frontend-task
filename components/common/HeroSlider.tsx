@@ -1,7 +1,6 @@
 'use client';
 
 import React, { useState, useRef } from 'react';
-import Image from 'next/image';
 import Link from 'next/link';
 
 import type { Swiper as SwiperClass } from 'swiper'; 
@@ -12,6 +11,7 @@ import { Navigation, Autoplay, EffectFade } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/effect-fade';
+import ImageWithFallback from './ImageWithFallback';
 
 interface ImageItem {
     id: number;
@@ -56,20 +56,19 @@ export const HeroSlider: React.FC = () => {
                 modules={[Navigation, Autoplay, EffectFade]}
                 className='w-full h-95.5 md:h-135 lg:h-187.5'
             >
-                {images.map((img) => (
+                {images.map((img, indx) => (
                     <SwiperSlide key={img.id} className="overlay before:bg-[linear-gradient(180deg,rgba(0,0,0,0)_31.12%,rgba(0,0,0,0.5)_66.06%)]">
-                        <Image 
+                        <ImageWithFallback
                             src={img.url} 
                             alt={img.alt}
                             fill
-                            priority
-                            fetchPriority='high' 
-                            className="object-cover"
+                            priority={indx === 0}
+                            fetchPriority='high'
                         />
                         <div className="absolute inset-0 flex flex-col justify-end p-4 md:p-8 lg:p-12 text-white z-10">
                             <h2 className="leading-none">NIKE AIR MAX</h2>
                             <p className='max-w-49.25 md:max-w-70 lg:max-w-122.5 text-sm/[1.357] md:text-base/[1.1875] lg:text-2xl/snug font-semibold'>Nike introducing the new air max for everyone&apos;s comfort</p>
-                            <Link href={'/checkout'} className="btn btn-primary min-w-28 h-8 sm:h-10 lg:h-12 mt-2 sm:mt-2.5 lg:mt-6">
+                            <Link href={'#'} className="btn btn-primary min-w-28 h-8 sm:h-10 lg:h-12 mt-2 sm:mt-2.5 lg:mt-6">
                                 Shop now
                             </Link>
                         </div>
@@ -84,11 +83,10 @@ export const HeroSlider: React.FC = () => {
                         onClick={() => handleThumbClick(img.id)}
                         className="relative w-16 md:w-24 lg:w-40 h-16 md:h-24 lg:h-40 border md:border-2 lg:border-3 border-gray rounded-lg md:rounded-xl lg:rounded-4xl overflow-hidden"
                     >
-                        <Image 
+                        <ImageWithFallback
                             src={img.url} 
                             alt={`Thumb ${img.id}`} 
                             fill 
-                            className="object-cover"
                         />
                     </button>
                 ))}
