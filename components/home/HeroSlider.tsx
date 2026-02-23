@@ -2,6 +2,7 @@
 
 import React, { useState, useRef } from 'react';
 import Link from 'next/link';
+import ImageWithFallback from '../common/ImageWithFallback';
 
 import type { Swiper as SwiperClass } from 'swiper'; 
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -11,7 +12,6 @@ import { Navigation, Autoplay, EffectFade } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/effect-fade';
-import ImageWithFallback from './ImageWithFallback';
 
 interface ImageItem {
     id: number;

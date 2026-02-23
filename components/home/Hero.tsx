@@ -1,4 +1,4 @@
-import { HeroSlider } from "../common/HeroSlider";
+import { HeroSlider } from "./HeroSlider";
 
 function Hero() {
 

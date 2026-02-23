@@ -57,7 +57,9 @@ function ProductSlider({ products } : ProductSliderProps) {
                     {
                         productPairs.map((pair, index) => (
                             <SwiperSlide key={index}>
-                                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-4">
+                                <div className={`grid gap-x-4 gap-y-6 lg:gap-y-4 lg:grid-cols-2 ${
+                                    pair.length <= 1 ? 'grid-cols-2' : 'grid-cols-1'
+                                }`}>
                                     {pair.map((product) => (
                                         <div key={product.id} className="col-span-1">
                                             <ProductCard product={product}/>

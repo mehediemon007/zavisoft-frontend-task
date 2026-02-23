@@ -136,7 +136,7 @@ function ProductContent({ showChart = true, product } : ProductCardProps) {
 
                     <div className='flex flex-wrap justify-between items-center gap-2 my-6 sm:my-8'>
                         <button className='btn btn-secondary hover:bg-foreground flex-1' onClick={handleAddToCart}>Add to cart</button>
-                        <button className='btn btn-secondary hover:bg-foreground px-4 py-2'><HeartIcon/></button>
+                        <button className='btn btn-secondary hover:bg-foreground px-4 py-2' aria-label='Add product to wishlist'><HeartIcon/></button>
                         <button className='btn btn-primary hover:bg-primary w-full'>Buy it now</button>
                     </div>
 

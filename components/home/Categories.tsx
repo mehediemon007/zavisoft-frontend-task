@@ -3,6 +3,7 @@ import React from 'react'
 import dynamic from 'next/dynamic';
 import { useQuery } from '@tanstack/react-query';
 import { fetchCategories } from '@/services/product-service';
+import { LoadingSpinner } from '../common/LoadingSpinner';
 
 const CategorySlider = dynamic(()=> import('../common/CategorySlider'));
 
@@ -14,13 +15,10 @@ function Categories() {
     })
 
     if (isLoading) {
-        return <div className="h-100 animate-pulse bg-gray-100 rounded-3xl" />;
+        return <LoadingSpinner/>;
     }
 
-    if (isError || !categories) {
-        return <div>Failed to load categories.</div>;
-    }
-
+    if (isError || !categories) return null;
 
     return (
         <section className='w-full bg-foreground overflow-hidden py-6 sm:pt-12 lg:pt-16 xl:pt-22.5 md:pb-0'>

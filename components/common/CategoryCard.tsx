@@ -30,7 +30,7 @@ function CategoryCard({ category, isHighlighted } : CategoryCardProps) {
                 <h4 className='max-w-64 sm:max-w-1/2 sm:text-3xl/[1] lg:text-4xl/[1.1945]'>
                     <Link href={`/products?category=${category.slug}`} className='lg:uppercase line-clamp-2 transition-colors duration-100 ease-in hover:text-primary'>{category.name}</Link>
                 </h4>
-                <Link href={`/products?category=${category.slug}`} className='btn btn-secondary w-8 sm:w-10 lg:w-12 h-8 sm:h-10 lg:h-12 rounded-sm sm:rounded-lg p-2 lg:mr-3'><ArrowIcon className='w-4 sm:w-8 h-4 sm:h-8'/></Link>
+                <Link href={`/products?category=${category.slug}`} aria-label='View Category' className='btn btn-secondary w-8 sm:w-10 lg:w-12 h-8 sm:h-10 lg:h-12 rounded-sm sm:rounded-lg p-2 lg:mr-3'><ArrowIcon className='w-4 sm:w-8 h-4 sm:h-8'/></Link>
             </div>
         </div>
     )
