@@ -44,7 +44,7 @@ export default function CustomSelect({ options, placeholder = "Select option", o
                 onClick={() => setIsOpen(!isOpen)}
                 aria-haspopup="listbox"
                 aria-expanded={isOpen}
-                className={`flex items-center justify-between gap-4 sm:gap-6 w-full h-auto transition-all duration-200`}
+                className={`flex items-center justify-between flex-wrap gap-4 sm:gap-6 w-full h-auto transition-all duration-200`}
             >
                 <span className='text-sm sm:text-xl text-gray-800 font-semibold'>
                     {selected ? `${placeholder} ${selected.label}` : placeholder}
