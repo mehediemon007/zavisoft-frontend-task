@@ -39,9 +39,9 @@ export const MobileMenu = ({ isOpen, onClose, navItems, activeSub, onToggleSub }
                     <nav>
                         <ul className="space-y-4">
                             {navItems.map((item) => (
-                                <li key={item.label} className="flex flex-col border-b border-gray-50 pb-2">
+                                <li key={item.label} className="flex flex-col border-b border-gray-300 pb-2">
                                     <div className="flex justify-between items-center">
-                                        <Link href={item.href} className="text-lg font-semibold font-rubik uppercase" onClick={onClose}>
+                                        <Link href={item.href} className="w-full text-lg font-semibold font-rubik uppercase" onClick={onClose}>
                                             {item.label}
                                         </Link>
                                         {item.hasDropdown && (
