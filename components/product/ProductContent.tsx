@@ -90,7 +90,7 @@ function ProductContent({ product } : ProductCardProps) {
 
                 <div className='my-6 sm:my-8'>
                     <p className='font-semibold font-rubik uppercase mb-2'>Color</p>
-                    <ColorSelector selectedColor={selectedColor} onColorSelect={setSelectedColor}/>
+                    <ColorSelector productId={product.id} selectedColor={selectedColor} onColorSelect={setSelectedColor}/>
                 </div>
 
                 <div>
@@ -98,7 +98,7 @@ function ProductContent({ product } : ProductCardProps) {
                         <p className='font-semibold font-rubik'>Size</p>
                         <span className='text-sm font-medium font-rubik tracking-[0.25px] uppercase underline'>Size chart</span>
                     </div>
-                    <SizeSelector selectedSize={selectedSize} onSizeSelect={setSelectedSize}/>
+                    <SizeSelector productId={product.id} selectedSize={selectedSize} onSizeSelect={setSelectedSize}/>
                 </div>
 
                 <div className='flex flex-wrap justify-between items-center gap-2 my-6 sm:my-8'>

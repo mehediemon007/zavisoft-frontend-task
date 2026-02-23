@@ -1,7 +1,5 @@
 'use client';
 
-import { useState } from "react";
-
 import { cn } from "@/lib/utils";
 
 const PRODUCT_COLORS = [
@@ -10,20 +8,12 @@ const PRODUCT_COLORS = [
 ];
 
 interface ColorSelectorProps {
-    selectedColor?: string;
-    onColorSelect?: (hex: string) => void;
+    productId: number;
+    selectedColor: string;
+    onColorSelect: (hex: string) => void;
 }
 
-export default function ColorSelector({ selectedColor, onColorSelect }: ColorSelectorProps) {
-
-    const [localColor, setLocalColor] = useState<string | null>(PRODUCT_COLORS[0].hex);
-
-    const currentColor = selectedColor || localColor;
-
-    const handleSelect = (hex: string) => {
-        setLocalColor(hex);
-        if (onColorSelect) onColorSelect(hex);
-    };
+export default function ColorSelector({ productId, selectedColor, onColorSelect }: ColorSelectorProps) {
 
     return (
         
@@ -34,10 +24,10 @@ export default function ColorSelector({ selectedColor, onColorSelect }: ColorSel
 
                     <input
                         type="radio"
-                            name="color"
+                            name={`${productId}-color-selection`}
                             value={color.hex}
-                            checked={currentColor === color.hex}
-                            onChange={() => handleSelect(color.hex)}
+                            checked={selectedColor === color.hex}
+                            onChange={() => onColorSelect(color.hex)}
                             className="hidden peer"
                     />
 

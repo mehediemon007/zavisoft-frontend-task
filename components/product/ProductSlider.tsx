@@ -52,12 +52,7 @@ function ProductSlider({ products } : ProductSliderProps) {
                         bulletClass: "custom-pagination-bullet",
                         bulletActiveClass: "custom-pagination-bullet-active",
                     }}
-                    autoplay={{
-                        delay: 3000,
-                        disableOnInteraction: false,
-                    }}
-                    loop={true}
-                    speed={1000}
+                    speed={500}
                 >
                     {
                         productPairs.map((pair, index) => (

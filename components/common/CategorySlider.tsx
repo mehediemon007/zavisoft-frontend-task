@@ -31,7 +31,7 @@ function CategorySlider({ categories }: CategorySliderProps) {
     return (
         <div className="relative">
             <div className="navigation-btns navigation-btns-right -top-14 sm:-top-18.5 lg:-top-22 xl:-top-26">
-                <button className="nav-btn nav-prev text-foreground">
+                <button className="nav-btn nav-prev text-foreground bg-[#858582]">
                     <PrevIcon/>
                 </button>
                 <button className="nav-btn nav-next text-foreground bg-white md:bg-gray">
@@ -51,7 +51,7 @@ function CategorySlider({ categories }: CategorySliderProps) {
                     delay: 3000,
                     disableOnInteraction: false,
                 }}
-                speed={1000}
+                speed={500}
             >
                 {categoryPairs.map((pair, index) => (
                     <SwiperSlide key={index}>

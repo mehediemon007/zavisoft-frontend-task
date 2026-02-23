@@ -38,13 +38,17 @@ function ProductCard({ product } : ProductCardProps) {
                 <button type='button' onClick={(()=> setIsOpen(true))} className='btn btn-secondary w-full text-xs sm:text-sm mt-2 sm:mt-4'>View Product -&nbsp;<span className='text-amber-500'>${product.price}</span></button>
             </div>
 
-            <Modal isOpen={isOpen} onClose={() => setIsOpen(false)}>
-                <Modal.Content className="w-full max-w-5xl">
-                    <Modal.Body>
-                        <ProductContent product={product}/>
-                    </Modal.Body>
-                </Modal.Content>
-            </Modal>
+            {
+                isOpen && (
+                    <Modal isOpen={isOpen} onClose={() => setIsOpen(false)}>
+                        <Modal.Content className="w-full max-w-5xl">
+                            <Modal.Body>
+                                <ProductContent product={product}/>
+                            </Modal.Body>
+                        </Modal.Content>
+                    </Modal>
+                )
+            }
 
         </>
     )
