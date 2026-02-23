@@ -19,7 +19,6 @@ export default function RelatedProducts({ slug, className }: Props) {
     const { data: relatedProducts, isLoading } = useQuery<Product[]>({
         queryKey: ['related-products', slug],
         queryFn: () => fetchRelatedProducts(slug),
-        retry: 1,
     });
 
     if (isLoading) return <LoadingSpinner />;

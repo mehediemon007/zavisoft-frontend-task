@@ -40,7 +40,7 @@ function Cart() {
                 !!displayItems.length ? (
                     <>
                         <div className='container'>
-                            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-11.75">
+                            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-11.75 pb-6 sm:-b-10">
                                 <div className="col-span-1 lg:col-span-2">
                                     <div className='bg-[#FAFAFA] rounded-2xl p-4 sm:p-6'>
                                         <div>
@@ -71,11 +71,11 @@ function Cart() {
                                 </div>
                             </div>
                         </div>
-                        <RelatedProducts slug={productSlug} className='sm:pt-10!'/>
+                        <RelatedProducts slug={productSlug} className='pt-0!'/>
                     </>
                 ) : (
                     <div className="container">
-                        <div className=''>
+                        <div className='pb-6 sm:-b-10'>
                             <ImageWithFallback
                                 src={'/assets/empty-cart.svg'}
                                 alt='empty cart'
