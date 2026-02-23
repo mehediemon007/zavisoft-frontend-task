@@ -16,3 +16,15 @@ export interface Product {
     creationAt?: string;
     updatedAt?: string;
 }
+
+export interface CartItem {
+    id: number;
+    title: string;
+    slug: string;
+    description: string,
+    price: number;
+    image: string;
+    color: string;
+    size: number;
+    quantity: number;
+}

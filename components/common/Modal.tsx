@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, createContext, useContext, useEffect, useRef } from 'react';
+import React, { createContext, useContext, useEffect, useRef } from 'react';
 import { createPortal } from 'react-dom';
 import { XIcon } from '../common/Icons';
 
@@ -95,7 +95,7 @@ const Header = ({ children, className = '' }: { children: React.ReactNode; class
 );
 
 const Body = ({ children, className = '' }: { children: React.ReactNode; className?: string }) => (
-    <div className={`p-6 ${className}`}>
+    <div className={`p-4 sm:p-6 ${className}`}>
         {children}
     </div>
 );

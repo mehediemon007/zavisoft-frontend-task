@@ -7,7 +7,14 @@ import { MenuIcon, SearchIcon, UserIcon, CaretDownIcon } from '../common/Icons';
 import { NAV_ITEMS } from '@/constants/navigation';
 import { MobileMenu } from './MobileMenu';
 
+import { useSelector } from 'react-redux';
+import { RootState } from '@/lib/store';
+
 function Header() {
+
+    const cartItems = useSelector((state: RootState) => state.cart.items);
+    const totalItems = cartItems.reduce((total, item) => total + item.quantity, 0);
+    
     const [isVisible, setIsVisible] = useState(true);
     const [isScrolling, setIsScrolling] = useState(false);
     const [lastScrollY, setLastScrollY] = useState(0);
@@ -93,7 +100,7 @@ function Header() {
                         
                         <div className="flex-1">
 
-                            <button onClick={() => setIsMenuOpen(true)} className='block lg:hidden'>
+                            <button aria-label='product menu' onClick={() => setIsMenuOpen(true)} className='block lg:hidden'>
                                 <MenuIcon className='w-5 sm:w-6 h-5 sm:h-6'/>
                             </button>
 
@@ -149,11 +156,11 @@ function Header() {
                                     </button>
                                 </div>
                             </div>
-                            <Link href={'/profile'}>
+                            <Link href={'/profile'} aria-label='user profile'>
                                 <UserIcon className='w-4 sm:w-6 h-4 sm:h-6'/>
                             </Link>
                             <Link href={'/cart'} className='relative inline-flex justify-center items-center w-5 sm:w-8 h-5 sm:h-8 bg-amber-500 rounded-full'>
-                                <span className='text-sm/[1] sm:text-base/[1] font-semibold'>0</span>
+                                <span className='text-sm/[1] sm:text-base/[1] font-semibold'>{totalItems + 1}</span>
                             </Link>
                         </div>
 

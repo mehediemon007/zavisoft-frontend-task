@@ -29,22 +29,8 @@ function NewDrops() {
         );
     }
 
-    if (isError) {
-        return (
-            <div className="text-center py-20 text-red-500">
-                <p>Failed to load new drops. Please try again later.</p>
-            </div>
-        );
-    }
- 
-    if (!products || products.length === 0) {
-        return (
-            <div className="text-center py-20 text-gray-500">
-                <p>No new drops available at the moment.</p>
-            </div>
-        );
-    }
-
+    if (isError) return null
+    
     return (
         <section className='pb-4 sm:pb-20 xl:pb-32'>
             <div className="container">
@@ -52,13 +38,22 @@ function NewDrops() {
                     <h2 className='max-w-full sm:max-w-90 md:max-w-105 lg:max-w-135 xl:max-w-147.25'>Don’t miss out new drops</h2>
                     <Link href={'#'} className='btn btn-primary shrink-0'>Shop New Drops</Link>
                 </div>
-                <div className='grid grid-cols-2 lg:grid-cols-4 gap-4'>
-                    {
-                        products.map((product) => (
-                            <ProductCard key={product.id} product={product}/>
-                        ))
-                    }
-                </div>
+
+                {
+                    !products || products.length === 0 ? (
+                        <div className="text-center py-20">
+                            <p>No new drops available at the moment.</p>
+                        </div>
+                    ) : (
+                        <div className='grid grid-cols-2 lg:grid-cols-4 gap-4'>
+                            {
+                                products.map((product) => (
+                                    <ProductCard key={product.id} product={product}/>
+                                ))
+                            }
+                        </div>
+                    )
+                }
             </div>
         </section>
     )

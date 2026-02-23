@@ -2,6 +2,10 @@
 
 import React, { useState } from 'react';
 
+import { useDispatch } from 'react-redux';
+import { addToCart } from '@/lib/features/cart/cartSlice';
+import { toast, Toaster } from 'react-hot-toast';
+
 import ColorSelector from '../common/ColorSelector';
 import SizeSelector from '../common/SizeSelector';
 import { Modal } from '../common/Modal';
@@ -23,10 +27,31 @@ import ImageWithFallback from '../common/ImageWithFallback';
 
 function ProductContent({ showChart = true, product } : ProductCardProps) {
 
+    const dispatch = useDispatch();
+
     const [isOpen, setIsOpen] = useState(false);
 
     const [selectedSize, setSelectedSize] = useState<number>(38);
     const [selectedColor, setSelectedColor] = useState<string>('#253043');
+
+    const handleAddToCart = () => {
+
+        const itemToCart = {
+            id: product.id,
+            title: product.title,
+            slug: product.slug,
+            description: product.description,
+            price: product.price,
+            image: product.images[0],
+            color: selectedColor,
+            size: selectedSize,
+            quantity: 1,
+        };
+
+        dispatch(addToCart(itemToCart));
+
+        toast.success(`${product.title} added to cart!`);
+    };
 
     if (!product) return <div className="p-20 text-center">Product not found.</div>;
 
@@ -53,8 +78,19 @@ function ProductContent({ showChart = true, product } : ProductCardProps) {
                                 <div 
                                     key={image}
                                     className={cn(
-                                        "overflow-hidden cursor-zoom-in",
+                                        "max-h-127.5 overflow-hidden cursor-zoom-in",
                                         isSingle ? "col-span-2" : "col-span-1",
+                                        isSingle && "rounded-[48px]",
+                                        isDouble && [
+                                            indx === 0 && "rounded-l-[48px]",
+                                            indx === 1 && "rounded-r-[48px]"
+                                        ],
+                                        (!isSingle && !isDouble) && [
+                                            indx === 0 && "rounded-tl-[48px]",
+                                            indx === 1 && "rounded-tr-[48px]",
+                                            (!isEven && isLast) || (isEven && isSecondLast) ? "rounded-bl-[48px]" : null,
+                                            isEven && isLast && "rounded-br-[48px]",
+                                        ]
                                     )}
                                 >
                                     <ZoomableImage
@@ -70,17 +106,6 @@ function ProductContent({ showChart = true, product } : ProductCardProps) {
                                         }
                                         className={cn(
                                             "object-cover w-full h-full",
-                                            isSingle && "rounded-[48px]",
-                                            isDouble && [
-                                                indx === 0 && "rounded-l-[48px]",
-                                                indx === 1 && "rounded-r-[48px]"
-                                            ],
-                                            (!isSingle && !isDouble) && [
-                                                indx === 0 && "rounded-tl-[48px]",
-                                                indx === 1 && "rounded-tr-[48px]",
-                                                (!isEven && isLast) || (isEven && isSecondLast) ? "rounded-bl-[48px]" : null,
-                                                isEven && isLast && "rounded-br-[48px]",
-                                            ]
                                         )}
                                     
                                     />
@@ -110,7 +135,7 @@ function ProductContent({ showChart = true, product } : ProductCardProps) {
                     </div>
 
                     <div className='flex flex-wrap justify-between items-center gap-2 my-6 sm:my-8'>
-                        <button className='btn btn-secondary hover:bg-foreground flex-1'>Add to cart</button>
+                        <button className='btn btn-secondary hover:bg-foreground flex-1' onClick={handleAddToCart}>Add to cart</button>
                         <button className='btn btn-secondary hover:bg-foreground px-4 py-2'><HeartIcon/></button>
                         <button className='btn btn-primary hover:bg-primary w-full'>Buy it now</button>
                     </div>
@@ -139,6 +164,8 @@ function ProductContent({ showChart = true, product } : ProductCardProps) {
                     </Modal>
                 )
             }
+
+            <Toaster/>
         </>
     )
 }
