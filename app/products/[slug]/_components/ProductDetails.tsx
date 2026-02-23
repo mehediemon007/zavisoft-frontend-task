@@ -1,6 +1,9 @@
 'use client';
 
 import React from 'react';
+import Image from 'next/image';
+import Link from 'next/link';
+
 import ProductContent from '@/components/product/ProductContent';
 import { LoadingSpinner } from '@/components/common/LoadingSpinner';
 
@@ -18,7 +21,18 @@ function ProductDetails({ slug} : { slug: string}) {
         return <LoadingSpinner/>
     }
 
-    if (isError || !product) return null;
+    if (isError || !product) {
+        return (
+            <div className="container">
+                <div className='bg-white rounded-xl lg:rounded-3xl mx-auto my-8 overflow-hidden'>
+                    <Image src={'/assets/404.svg'} alt='Not found' width={500} height={500} className='bg-cover mx-auto'/>
+                    <div className='text-center py-4 sm:my-6'>
+                        <Link href='/' className='btn btn-secondary'>Back To Home</Link>
+                    </div>
+                </div>
+            </div>
+        )
+    };
 
     return (
         <section className='mt-6 lg:mt-8'>
