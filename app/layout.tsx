@@ -5,9 +5,10 @@ import "./globals.css";
 
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
+import NewsLetter from "@/components/common/NewsLetter";
+import ScrollTop from "@/components/common/ScrollTop";
 
 import QueryProvider from "@/providers/QueryProvider";
-import NewsLetter from "@/components/common/NewsLetter";
 
 const rubik = Rubik({
     display: 'swap',
@@ -48,6 +49,7 @@ export default function RootLayout({children,}: Readonly<{children: React.ReactN
                     <NewsLetter/>
                     <Footer/>
                 </QueryProvider>
+                <ScrollTop/>
             </body>
         </html>
     );

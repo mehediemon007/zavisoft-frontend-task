@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { MenuIcon, SearchIcon, UserIcon, CaretDownIcon } from '../common/Icons';
@@ -16,6 +16,34 @@ function Header() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [activeMobileSub, setActiveMobileSub] = useState<string | null>(null);
 
+    const [isSearchOpen, setIsSearchOpen] = useState(false);
+    const searchInputRef = useRef<HTMLInputElement>(null);
+    const searchContainerRef = useRef<HTMLDivElement>(null);
+
+    useEffect(() => {
+        if (isSearchOpen && searchInputRef.current) {
+            searchInputRef.current.focus();
+        }
+    }, [isSearchOpen]);
+
+    useEffect(() => {
+        const handleClickOutside = (event: MouseEvent) => {
+            if (
+                searchContainerRef.current && 
+                !searchContainerRef.current.contains(event.target as Node)
+            ) {
+                setIsSearchOpen(false);
+            }
+        };
+
+        if (isSearchOpen) {
+            document.addEventListener('mousedown', handleClickOutside);
+        }
+
+        return () => {
+            document.removeEventListener('mousedown', handleClickOutside);
+        };
+    }, [isSearchOpen]);
     
     useEffect(() => {
 
@@ -99,18 +127,34 @@ function Header() {
                             </Link>
                         </div>
 
-                        <div className='flex-1'>
-                            <div className='flex justify-end items-center gap-2 sm:gap-4 lg:gap-10'>
-                                <button aria-label='Search Product'>
-                                    <SearchIcon className='w-4 sm:w-7 h-4 sm:h-7'/>
+                        <div className='relative flex-1 flex justify-end items-center gap-2 sm:gap-4 lg:gap-10 h-full'>
+                            <div ref={searchContainerRef} className="flex items-center h-full">
+                                <button aria-label='Search Product' onClick={() => setIsSearchOpen((prev) => !prev)}>
+                                    <SearchIcon className='w-4 sm:w-7 h-4 sm:h-7 cursor-pointer hover:text-amber-500 transition-colors'/>
                                 </button>
-                                <Link href={'/profile'}>
-                                    <UserIcon className='w-4 sm:w-6 h-4 sm:h-6'/>
-                                </Link>
-                                <Link href={'/cart'} className='relative inline-flex justify-center items-center w-5 sm:w-8 h-5 sm:h-8 bg-amber-500 rounded-full'>
-                                    <span className='text-sm/[1] sm:text-base/[1] font-semibold'>0</span>
-                                </Link>
+                                
+                                <div className={`absolute top-full right-0 flex items-center min-w-70 bg-white p-2 rounded-b-lg shadow-xl border-t border-gray-100 transition-all z-10 ${isSearchOpen ? 'visible opacity-100 translate-y-0' : 'invisible opacity-0 translate-y-4'}`}>
+                                    <input 
+                                        ref={searchInputRef}
+                                        type="text" 
+                                        placeholder="Search products..."
+                                        className="w-full h-10 lg:h-12 bg-gray-100 rounded-full px-5 pr-10 outline-none focus:ring-2 focus:ring-amber-500/20 font-rubik text-sm"
+                                    />
+                                    <button 
+                                        className="absolute right-6 p-1 hover:bg-gray-200 rounded-full transition-colors"
+                                        aria-label="Submit search"
+                                        onClick={()=> setIsSearchOpen(false)}
+                                    >
+                                        <SearchIcon className="w-4 h-4 text-gray-500" />
+                                    </button>
+                                </div>
                             </div>
+                            <Link href={'/profile'}>
+                                <UserIcon className='w-4 sm:w-6 h-4 sm:h-6'/>
+                            </Link>
+                            <Link href={'/cart'} className='relative inline-flex justify-center items-center w-5 sm:w-8 h-5 sm:h-8 bg-amber-500 rounded-full'>
+                                <span className='text-sm/[1] sm:text-base/[1] font-semibold'>0</span>
+                            </Link>
                         </div>
 
                     </div>

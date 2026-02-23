@@ -35,7 +35,7 @@ function ProductCard({ product } : ProductCardProps) {
                 <h5 className='text-base/[1.187] sm:text-2xl/[1.167] mt-4'>
                     <Link href={`/products/${product.slug}`} className='h-14 line-clamp-3 sm:line-clamp-2 align-middle transition-colors duration-100 ease-in hover:text-primary'>{product.title}</Link>
                 </h5>
-                <button type='button' onClick={(()=> setIsOpen(true))} className='btn btn-secondary w-full text-xs sm:text-sm mt-2 sm:mt-4'>View Product -&nbsp;<span className='text-amber-500'>${product.price}</span></button>
+                <button type='button' onClick={(()=> setIsOpen(true))} className='btn btn-secondary w-full text-xs sm:text-sm mt-2 sm:mt-4 group'>View Product -&nbsp;<span className='text-amber-500 transition-colors duration-200 ease-in group-hover:text-foreground'>${product.price}</span></button>
             </div>
 
             {
@@ -43,7 +43,7 @@ function ProductCard({ product } : ProductCardProps) {
                     <Modal isOpen={isOpen} onClose={() => setIsOpen(false)}>
                         <Modal.Content className="w-full max-w-5xl">
                             <Modal.Body>
-                                <ProductContent product={product}/>
+                                <ProductContent product={product} showChart={false}/>
                             </Modal.Body>
                         </Modal.Content>
                     </Modal>
