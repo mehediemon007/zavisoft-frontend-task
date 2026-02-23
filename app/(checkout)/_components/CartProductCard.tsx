@@ -6,6 +6,7 @@ import { CartItem } from '@/types/product';
 
 // *** Import Icons
 import { BinIcon, HeartLineIcon } from '@/components/common/Icons';
+import CustomSelect from '@/components/common/SelectBox';
 
 interface CartProductCardProps {
     product: CartItem;
@@ -26,23 +27,41 @@ function CartProductCard({ product } : CartProductCardProps ) {
                     <div className='lg:max-w-81.25'>
                         <h5 className='text-base sm:text-2xl/[1.125]'><Link href={`/products/${product.slug}`}>{product.title}</Link></h5>
                         <p className='text-sm sm:text-xl text-gray-800 font-semibold mt-2 line-clamp-2'>{product.description}</p>
-                        <div className='flex gap-2 mt-2'>
-                            <div>
-                                <label htmlFor="size" className='text-sm sm:text-xl text-gray-800 font-semibold'>Size</label>
-                                <select id="size" name="size">
-                                    <option value="8">08</option>
-                                    <option defaultValue="10" value="10">10</option>
-                                    <option value="12">12</option>
-                                </select>
-                            </div>
-                            <div>
-                                <label htmlFor="qty" className='text-sm sm:text-xl text-gray-800 font-semibold'>Quantity</label>
-                                <select id="qty" name="qty">
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="4">4</option>
-                                </select>
-                            </div>
+                        <div className='flex gap-4 sm:gap-6 lg:gap-10 mt-2'>
+                            <CustomSelect
+                                placeholder='Size'
+                                options={[
+                                    {
+                                        label: '8',
+                                        value: '8'
+                                    },
+                                    {
+                                        label: '10',
+                                        value: '10'
+                                    },
+                                    {
+                                        label: '12',
+                                        value: '12'
+                                    }
+                                ]}
+                            />
+                            <CustomSelect
+                                placeholder='Quantity'
+                                options={[
+                                    {
+                                        label: '1',
+                                        value: '1'
+                                    },
+                                    {
+                                        label: '6',
+                                        value: '16'
+                                    },
+                                    {
+                                        label: '12',
+                                        value: '12'
+                                    }
+                                ]}
+                            />
                         </div>
                     </div>
                     <h5 className='text-primary'>${product.price}</h5>
