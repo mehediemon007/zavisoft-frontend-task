@@ -24,11 +24,12 @@ export default function ColorSelector({ productId, selectedColor, onColorSelect 
 
                     <input
                         type="radio"
-                            name={`${productId}-color-selection`}
-                            value={color.hex}
-                            checked={selectedColor === color.hex}
-                            onChange={() => onColorSelect(color.hex)}
-                            className="hidden peer"
+                        name={`${productId}-color-selection`}
+                        value={color.hex}
+                        checked={selectedColor === color.hex}
+                        onChange={() => onColorSelect(color.hex)}
+                        aria-label={color.name}
+                        className="hidden peer"
                     />
 
                     <span
@@ -39,8 +40,6 @@ export default function ColorSelector({ productId, selectedColor, onColorSelect 
                         style={{
                             backgroundColor: color.hex,
                         } as React.CSSProperties}
-
-                        aria-label={color.name}
 
                     ></span>
 
